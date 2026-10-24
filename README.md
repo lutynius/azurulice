@@ -9,6 +9,6 @@ This project's code is free software licensed under the **GNU General Public Lic
 ### Media & Third-Party Assets
 The images and screenshots used in this project are **not** covered by the GNU GPL license. 
 
-* Map images and screenshots: **© Seznam.cz, a.s. and contributors** (via [Mapy.cz](https://mapy.com/)).
+* Map images and map screenshots: **© Seznam.cz, a.s. and contributors** (via [Mapy.cz](https://mapy.com/)).
 * Map images are used under [Mapy.cz's License Terms](https://developer.mapy.com/terms-and-conditions/). All rights to these visual assets remain with their respective copyright holders.
 * **'images/dispatcher16.png'**: **Invincible Compendium Three** © Skybound Entertainment / Image Comics. Original artwork and characters created by Robert Kirkman, Cory Walker, and Ryan Ottley. Used here solely for non-commercial/referential purposes.
