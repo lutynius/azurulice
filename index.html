@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Thingy</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <div class="main-menu">
+            <h1 class="menu-title">Vítej v Azurulice! (Azurové ulice)</h1>
+            <h2 class="menu-subtitle">Kvíz na random ulice z Moravskoslezského kraje</h2>
+            <button class="start-button">Start</button>
+            <button class="change-colorscheme-button">Změnit barevné schéma</button>
+            <button class="changelog-button">Protokol změn</button>
+        </div>
+
+        <div class="colorscheme-settings">
+            <button class="go-back-button">BACK</button>
+            <section class="tricolor">
+                <div class="showcase-colors" id="tricolor-showcase-color-1"></div>
+                <div class="showcase-colors" id="tricolor-showcase-color-2"></div>
+                <div class="showcase-colors" id="tricolor-showcase-color-3"></div>
+                <h1>Trikolóra</h1>
+                <button id="change-to-tricolor-button">Změnit</button>
+            </section>
+            <section class="triumvirate">
+                <div class="showcase-colors" id="triumvirate-showcase-color-1"></div>
+                <div class="showcase-colors" id="triumvirate-showcase-color-2"></div>
+                <div class="showcase-colors" id="triumvirate-showcase-color-3"></div>
+                <h1>Triumvirát (Výchozí)</h1>
+                <button id="change-to-triumvirate-button">Změnit</button>
+            </section>
+            <section class="light">
+                <div class="showcase-colors" id="light-showcase-color-1"></div>
+                <div class="showcase-colors" id="light-showcase-color-2"></div>
+                <div class="showcase-colors" id="light-showcase-color-3"></div>
+                <h1>Světlo</h1>
+                <button id="change-to-light-button">Změnit</button>
+            </section>
+            <section class="dark">
+                <div class="showcase-colors" id="dark-showcase-color-1"></div>
+                <div class="showcase-colors" id="dark-showcase-color-2"></div>
+                <div class="showcase-colors" id="dark-showcase-color-3"></div>
+                <h1>Temno</h1>
+                <button id="change-to-dark-button">Změnit</button>
+            </section>
+        </div>
+
+        <div class="changelog">
+            <button class="go-to-menu-button">BACK</button>
+            <div class="updatelog">
+                <p class="updatelog-text"></p>
+            </div>
+        </div>
+
+        <div class="question">
+            <header>
+                <h1 class="text">Texten</h1>
+                <p class="copyright_header">Zdroj map: mapy.com</p>
+            </header>
+            <main>
+                <img class="image" src="images/okruzni.png" alt="Obrázek nějaké české ulice z webové stránky mapy.com - Konkrétní ulice se neví, jelikož tohle je kvíz a tenhle obrázek se frekventně mění">
+            </main>
+            <footer>
+                <input class="input" type="text">
+                <button class="submit-button" type="submit">Submit</button>
+                <img class="dispatcher16" src="images/dispatcher16.png" alt="Obrázek poflaxanském Robotovi co potlačuje svůj hněv proti Markovi. Tenhle obrázek je zobrazen pouze při ulicích Adamusova v Orlové a Na Olmovci, jinak je tenhle obrázek zakryt.">
+            </footer>
+        </div>
+
+        <div class="end-results">
+            <h1>Konec!</h1>
+            <h2>Pročetl jsi všechny ulice!</h2>
+            <h1>Výsledný počet bodů:</h1>
+            <h1 id="result">
+                <span id="score-acquired">x</span>
+                 / 
+                <span id="score-maximum">y</span>
+            </h1>
+            <h1>
+                <span id="percentage">z</span>%
+            </h1>
+        </div>
+
+        <script type="module" src="script.js" defer></script>
+
+    </body>
+
+</html>

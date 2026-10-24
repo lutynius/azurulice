@@ -1,0 +1,248 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.copyright_main-menu {
+    font-size: 1rem;
+    position: absolute;
+    top: 0.5%;
+}
+
+.main-menu {
+    width: 80%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: antiquewhite;
+    border: 5px black solid;
+}
+
+.menu-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3rem;
+    margin: 1rem;
+}
+
+.menu-subtitle {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+}
+
+.main-menu button {
+    width: 80%;
+    height: 20%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+/*--------------------------------------------------*/
+
+.colorscheme-settings {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.go-back-button {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+}
+
+.colorscheme-settings h1 {
+    font-size: 2rem;
+    margin-left: 5%;
+    margin-right: 4%;
+}
+
+.colorscheme-settings button {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.showcase-colors {
+    width: 5%;
+    height: 70%;
+    border: 4px solid black;
+}
+
+.colorscheme-settings section {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+}
+
+#tricolor-showcase-color-1 {background-color: red;}
+#tricolor-showcase-color-2 {background-color: limegreen;}
+#tricolor-showcase-color-3 {background-color: blue;}
+
+#triumvirate-showcase-color-1 {background-color: antiquewhite;}
+#triumvirate-showcase-color-2 {background-color: bisque;}
+#triumvirate-showcase-color-3 {background-color: wheat;}
+
+#light-showcase-color-1 {background-color: whitesmoke;}
+#light-showcase-color-2 {background-color: white;}
+#light-showcase-color-3 {background-color: whitesmoke;}
+
+#dark-showcase-color-1 {background-color: black;}
+#dark-showcase-color-2 {background-color: dimgray;}
+#dark-showcase-color-3 {background-color: gray;}
+
+/*--------------------------------------------------*/
+
+.changelog {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+}
+
+.updatelog {
+    height: 80%;
+    width: 80%;
+    border: 4px solid black;
+    background-color: white;
+    overflow: scroll;
+}
+
+.go-to-menu-button {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.updatelog-text {
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 2%;
+    white-space: pre-line;
+}
+
+/*--------------------------------------------------*/
+
+.question {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.question header {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+}
+
+.copyright_header {
+    font-size: 0.7rem;
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+}
+
+.question main {
+    flex: 6;
+    width: 100%;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.question footer {
+    flex: 1;
+    width: 100%;
+    background-color: wheat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    width: 60%;
+    height: 67%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5rem;
+    border: 4px solid black
+}
+
+.submit-button {
+    width: 20%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5rem;
+    border: 4px solid black;
+    cursor: pointer;
+}
+
+.dispatcher16 {
+    display: none;
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    width: 10%;
+}
+
+/*--------------------------------------------------*/
+
+.end-results {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
