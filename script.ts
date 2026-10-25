@@ -678,12 +678,25 @@ const ITERATED: Array<Question> = [];
 
 //***********************************************************/
 
-const VERSION_1_0: string = `Verze 1.0 "Release"
+const VERSION_1_0: string = `Verze 1.0 "Release" - sobota 24.10.2026
+    - vývoj začal pondělí 19.10.2026
     - 63 ulic - ve všech jsem byl anebo je znám
     - Grafické schémata trikolóra, triumvirát, světlo, temno
-    - Prostor na chyby
+    - Prostor na chyby = jiné platné zápisy a malé gramatické chyby se počítají
 `;
 
-UPDATELOG_TEXT.textContent = VERSION_1_0
+const VERSION_1_1: string = `Verze 1.1 "Hotfix" - neděle 25.10.2026
+    - vývoj začal a skončil 25.10.2026
+    - oprava obrázkové latence:
+        - ve verzi 1.0 se obrázky načetly v moment co byly potřeba, což způsobilo drtivou latenci
+        - nyní se obrázky načtou hned co se otevře stránka
+    - přidal jsem html head title "Azurulice (Azurové Ulice)" (v Releasu jsem to zapomněl změnit)
+`;
+
+const LOG: string =
+    VERSION_1_1 + "\n"
+    + VERSION_1_0;
+
+UPDATELOG_TEXT.textContent = LOG;
 
 export {};
