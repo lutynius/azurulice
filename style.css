@@ -152,7 +152,7 @@ h1, h2 {
     font-size: 1rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-left: 2%;
-    white-space: pre-line;
+    white-space: pre-wrap;
 }
 
 /*--------------------------------------------------*/
