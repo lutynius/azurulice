@@ -106,6 +106,21 @@ function setColorSchemeToDark(): void {
     }
 }
 
+const PRELOADED_IMAGES: HTMLImageElement[] = [];
+
+function preloadImages(): void {
+    let i = 0;
+    TO_BE_ITERATED.forEach(q => {
+        if (q.imagePath){
+            i++
+            const img = new Image();
+            img.src = q.imagePath;
+            PRELOADED_IMAGES.push(img);
+            console.log(i + ". Loading image: " + img.src)
+        }
+    })
+}
+
 function pickRandomUliceThatIsYetToBeIterated(): Question {
     if (TO_BE_ITERATED.length <= 0){
         finishQuiz();
@@ -651,6 +666,8 @@ const K_ZIMOVUDCE = new Question("Co je tohle za ulici v Orlové?",
     ]
 );
 TO_BE_ITERATED.push(K_ZIMOVUDCE);
+
+preloadImages();
 
 const maxScore: number = TO_BE_ITERATED.length;
 

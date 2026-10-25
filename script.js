@@ -99,6 +99,19 @@ function setColorSchemeToDark() {
         console.log("ERROR: Question's header, main, footer, and text apparently do not exist.");
     }
 }
+const PRELOADED_IMAGES = [];
+function preloadImages() {
+    let i = 0;
+    TO_BE_ITERATED.forEach(q => {
+        if (q.imagePath) {
+            i++;
+            const img = new Image();
+            img.src = q.imagePath;
+            PRELOADED_IMAGES.push(img);
+            console.log(i + ". Loading image: " + img.src);
+        }
+    });
+}
 function pickRandomUliceThatIsYetToBeIterated() {
     if (TO_BE_ITERATED.length <= 0) {
         finishQuiz();
@@ -455,6 +468,7 @@ const K_ZIMOVUDCE = new Question("Co je tohle za ulici v Orlové?", "images/k_zi
     "k zimovudce", "k zimovůdce"
 ]);
 TO_BE_ITERATED.push(K_ZIMOVUDCE);
+preloadImages();
 const maxScore = TO_BE_ITERATED.length;
 console.log(TO_BE_ITERATED);
 console.log("Max score constant: " + maxScore);
