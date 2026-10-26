@@ -129,7 +129,7 @@ function displayQuestion(question) {
             TEXT.textContent = "ERROR: Could not load the image. The current question's imagepath is probably null or undefined.";
         }
         else {
-            if (question.imagePath == "images/adamusova_orlova.png" || question.imagePath == "images/na_olmovci.png" || question.imagePath == "images/f_s_tumy.png") {
+            if (question.imagePath == "images/adamusova_orlova.png" || question.imagePath == "images/na_olmovci.png" || question.imagePath == "images/f_s_tumy.png" || question.imagePath == "images/kratka.png") {
                 DISPATCHER16.style.display = "inline";
             }
             else {
@@ -416,7 +416,7 @@ const MARTINOVSKA = new Question("Co je tohle za ulici v Porubě, Třebovicích,
     "martinovská", "martinovska"
 ]);
 TO_BE_ITERATED.push(MARTINOVSKA);
-const EDEN = new Question("Co je tohle za ulici v Rychvaldě?", "images/eden.png", [
+const EDEN = new Question("Co je tohle za mikro ulici v Rychvaldě?", "images/eden.png", [
     "eden"
 ]);
 TO_BE_ITERATED.push(EDEN);
@@ -468,6 +468,18 @@ const K_ZIMOVUDCE = new Question("Co je tohle za ulici v Orlové?", "images/k_zi
     "k zimovudce", "k zimovůdce"
 ]);
 TO_BE_ITERATED.push(K_ZIMOVUDCE);
+const KRATKA = new Question("Co je tohle za ulici na 5. etapě?", "images/kratka.png", [
+    "krátká", "krátka", "kratká", "kratka"
+]);
+TO_BE_ITERATED.push(KRATKA);
+const ELDORADO = new Question("Co je tohle za ulici v Rychvaldě?", "images/eldorado.png", [
+    "eldorádo", "eldorado"
+]);
+TO_BE_ITERATED.push(ELDORADO);
+const U_DZUNGLE = new Question("Co je tohle za uličku v Rychvaldě?", "images/u_dzungle.png", [
+    "u džungle", "u dzungle", "u jungle"
+]);
+TO_BE_ITERATED.push(U_DZUNGLE);
 preloadImages();
 const maxScore = TO_BE_ITERATED.length;
 console.log(TO_BE_ITERATED);
@@ -487,7 +499,16 @@ const VERSION_1_1 = `Verze 1.1 "Hotfix" - neděle 25.10.2026
         - nyní se obrázky načtou hned co se otevře stránka
     - přidal jsem html head title "Azurulice (Azurové Ulice)" (v Releasu jsem to zapomněl změnit)
 `;
-const LOG = VERSION_1_1 + "\n"
+const VERSION_1_2 = `Verze 1.2 "Tweak" - pondělí 26.10.2026
+    - vývoj začal 25.10.2026 a skončil 26.10.2026
+    - Změnil jsem otázku o Edenu z "Co je tohle za ulici v Rychvaldě?" na "Co je tohle za mikro ulici v Rychvaldě?"
+    - Přidal jsem 3 nové ulice, které zas tak moc dobře neznám, ale teď si je určitě budu stopro pamatovat:
+        1. Krátká (Orlová-Lutyně)
+        2. Eldorádo (Rychvald)
+        3. U Džungle (Rychvald)
+`;
+const LOG = VERSION_1_2 + "\n" +
+    VERSION_1_1 + "\n"
     + VERSION_1_0;
 UPDATELOG_TEXT.textContent = LOG;
 export {};
