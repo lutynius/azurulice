@@ -65,32 +65,38 @@ function goBackToStartMenu(): void {
 }
 
 function setColorSchemeToTricolor(): void {
-    if (HEADER && MAIN && FOOTER){
+    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER){
+        TEXT.style.color = "black";
+        COPYRIGHT_HEADER.style.color = "black";
         HEADER.style.backgroundColor = "red";
         MAIN.style.backgroundColor = "limegreen";
         FOOTER.style.backgroundColor = "blue";
     } else {
-        console.log("ERROR: Question's header, main, and footer apparently do not exist.");
+        console.log("ERROR: Question's header, main, footer, and text apparently do not exist.");
     }
 }
 
 function setColorSchemeToTriumvirate(): void {
-    if (HEADER && MAIN && FOOTER){
+    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER){
+        TEXT.style.color = "black";
+        COPYRIGHT_HEADER.style.color = "black";
         HEADER.style.backgroundColor = "antiquewhite";
         MAIN.style.backgroundColor = "bisque";
         FOOTER.style.backgroundColor = "wheat";
     } else {
-        console.log("ERROR: Question's header, main, and footer apparently do not exist.");
+        console.log("ERROR: Question's header, main, footer, and text apparently do not exist.");
     }
 }
 
 function setColorSchemeToLight(): void {
-    if (HEADER && MAIN && FOOTER){
+    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER){
+        TEXT.style.color = "black";
+        COPYRIGHT_HEADER.style.color = "black";
         HEADER.style.backgroundColor = "whitesmoke";
         MAIN.style.backgroundColor = "white";
         FOOTER.style.backgroundColor = "whitesmoke";
     } else {
-        console.log("ERROR: Question's header, main, and footer apparently do not exist.");
+        console.log("ERROR: Question's header, main, footer, and text apparently do not exist.");
     }
 }
 
@@ -723,7 +729,18 @@ const VERSION_1_2: string = `Verze 1.2 "Tweak" - pondělí 26.10.2026
         3. U Džungle (Rychvald)
 `;
 
+const VERSION_1_3: string = `Verze 1.3 "Minor" - středa 28.10.2026 svátek
+    - vývoj začal a skončil 28.10.2026
+    - Přidal jsem tuto hru na itch.io (https://lutynius.itch.io/azurulice):
+        - v minulých verzí neměl html body a end-results dané pozadí, a tak se v itch.io načetly černě, což způsobilo, že nešlo text přečíst
+        - přidal jsem html body a end-results bílé pozadí
+    - Spravil jsem stackování schémat:
+        - v minulých verzí jste mohli např. nastavit světlé a černé schéma a to způsobilo že text měl stejnou barvu jako pozadí a nešlo text přečíst
+        - nyní nemůžete stackovat barevná schémata
+`
+
 const LOG: string =
+    VERSION_1_3 + "\n" +
     VERSION_1_2 + "\n" +
     VERSION_1_1 + "\n"
     + VERSION_1_0;
