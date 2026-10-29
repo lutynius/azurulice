@@ -1,48 +1,60 @@
 let score = 0;
 let currentQuestion;
 let currentQuestionOrdinal = 0;
-const MAIN_MENU = document.querySelector(".main-menu");
-const START_BUTTON = document.querySelector(".start-button");
-const CHANGE_COLORSCHEME_BUTTON = document.querySelector(".change-colorscheme-button");
-const CHANGELOG_BUTTON = document.querySelector(".changelog-button");
-const COLORSCHEME_SETTINGS = document.querySelector(".colorscheme-settings");
-const GO_BACK_BUTTON = document.querySelector(".go-back-button");
-const CHANGE_TO_TRICOLOR_BUTTON = document.querySelector("#change-to-tricolor-button");
-const CHANGE_TO_TRIUMVIRATE_BUTTON = document.querySelector("#change-to-triumvirate-button");
-const CHANGE_TO_LIGHT_BUTTON = document.querySelector("#change-to-light-button");
-const CHANGE_TO_DARK_BUTTON = document.querySelector("#change-to-dark-button");
-const CHANGELOG = document.querySelector(".changelog");
-const GO_TO_MAIN_MENU_BUTTON = document.querySelector(".go-to-menu-button");
-const UPDATELOG_TEXT = document.querySelector(".updatelog-text");
-const QUESTION = document.querySelector(".question");
-const HEADER = QUESTION.querySelector("header");
-const TEXT = document.querySelector(".text");
-const COPYRIGHT_HEADER = document.querySelector(".copyright_header");
-const MAIN = QUESTION.querySelector("main");
-const IMAGE = document.querySelector(".image");
-const FOOTER = QUESTION.querySelector("footer");
-const INPUT = document.querySelector(".input");
-const SUBMIT_BUTTON = document.querySelector(".submit-button");
-const DISPATCHER16 = document.querySelector(".dispatcher16");
-const END_RESULTS = document.querySelector(".end-results");
-const RESULTEXT = document.querySelector("#result");
-const SCORE_ACQUIRED = document.querySelector("#score-acquired");
-const SCORE_MAXIMUM = document.querySelector("#score-maximum");
-const PERCENTAGE = document.querySelector("#percentage");
+const MAIN_MENU = document.getElementById("main-menu");
+const MAIN_MENU_TITLE = document.getElementById("main-menu-title");
+const MAIN_MENU_SUBTITLE = document.getElementById("main-menu-subtitle");
+const START_BUTTON = document.getElementById("start-button");
+const COLORSCHEME_BUTTON = document.getElementById("colorscheme-button");
+const CHANGELOG_BUTTON = document.getElementById("changelog-button");
+const COLORSCHEME_SETTINGS = document.getElementById("colorscheme-settings");
+const SET_TRICOLOR_BUTTON = document.getElementById("set-tricolor-button");
+const SET_TRIUMVIRATE_BUTTON = document.getElementById("set-triumvirate-button");
+const SET_LIGHT_BUTTON = document.getElementById("set-light-button");
+const SET_DARK_BUTTON = document.getElementById("set-dark-button");
+const COLORSCHEME_TITLES = document.querySelectorAll(".colorscheme-titles");
+const COLORSCHEME_TO_MAIN_MENU_BUTTON = document.getElementById("colorscheme-to-main-menu-button");
+const TRICOLOR_TITLE = document.getElementById("tricolor-title");
+const TRIUMVIRATE_TITLE = document.getElementById("triumvirate-title");
+const LIGHT_TITLE = document.getElementById("light-title");
+const DARK_TITLE = document.getElementById("dark-title");
+const CHANGELOG = document.getElementById("changelog");
+const UPDATELOG_TEXT = document.getElementById("updatelog-text");
+const CHANGELOG_TO_MAIN_MENU_BUTTON = document.getElementById("changelog-to-main-menu-button");
+const GAME_MENU = document.getElementById("game-menu");
+const HEADER = document.getElementById("header");
+const QUESTION_TEXT = document.getElementById("question-text");
+const COPYRIGHT = document.getElementById("copyright");
+const MAIN = document.getElementById("main");
+const QUESTION_IMAGE = document.getElementById("question-image");
+const FOOTER = document.getElementById("footer");
+const FOOT_TITLE = document.getElementById("foot-title");
+const QUESTION_INPUT = document.getElementById("question-input");
+const SUBMIT_BUTTON = document.getElementById("submit-button");
+const END_RESULTS = document.getElementById("end-results");
+const END_TITLE = document.getElementById("end-title");
+const END_SUBTITLE = document.getElementById("end-subtitle");
+const END_LETITLE = document.getElementById("end-letitle");
+const SCORE = document.getElementById("score");
+const SCORE_ACQUIRED = document.getElementById("score-acquired");
+const SCORE_MAXIMUM = document.getElementById("score-maximum");
+const PERCENTAGE = document.getElementById("percentage");
+const PERCENT = document.getElementById("percent");
+//----------------------------------------------------------------//
 START_BUTTON.addEventListener("click", startGame);
-CHANGE_COLORSCHEME_BUTTON.addEventListener("click", displayColorSchemeSettings);
-GO_BACK_BUTTON.addEventListener("click", goBackToStartMenu);
+COLORSCHEME_BUTTON.addEventListener("click", displayColorSchemeSettings);
 CHANGELOG_BUTTON.addEventListener("click", displayChangelog);
-GO_TO_MAIN_MENU_BUTTON.addEventListener("click", goBackToStartMenu);
-CHANGE_TO_TRICOLOR_BUTTON.addEventListener("click", setColorSchemeToTricolor);
-CHANGE_TO_TRIUMVIRATE_BUTTON.addEventListener("click", setColorSchemeToTriumvirate);
-CHANGE_TO_LIGHT_BUTTON.addEventListener("click", setColorSchemeToLight);
-CHANGE_TO_DARK_BUTTON.addEventListener("click", setColorSchemeToDark);
+COLORSCHEME_TO_MAIN_MENU_BUTTON.addEventListener("click", backToMainMenu);
+CHANGELOG_TO_MAIN_MENU_BUTTON.addEventListener("click", backToMainMenu);
+SET_TRICOLOR_BUTTON.addEventListener("click", () => setColorScheme("tricolor"));
+SET_TRIUMVIRATE_BUTTON.addEventListener("click", () => setColorScheme("triumvirate"));
+SET_LIGHT_BUTTON.addEventListener("click", () => setColorScheme("light"));
+SET_DARK_BUTTON.addEventListener("click", () => setColorScheme("dark"));
 SUBMIT_BUTTON.addEventListener("click", submitAnswer);
 function startGame() {
     MAIN_MENU.style.display = "none";
-    QUESTION.style.display = "flex";
-    displayQuestion(pickRandomUliceThatIsYetToBeIterated());
+    GAME_MENU.style.display = "flex";
+    displayQuestion(pickRandomSquareThatIsYetToBeIterated());
 }
 function displayColorSchemeSettings() {
     MAIN_MENU.style.display = "none";
@@ -52,58 +64,53 @@ function displayChangelog() {
     MAIN_MENU.style.display = "none";
     CHANGELOG.style.display = "flex";
 }
-function goBackToStartMenu() {
-    COLORSCHEME_SETTINGS.style.display = "none";
+function backToMainMenu() {
     CHANGELOG.style.display = "none";
+    COLORSCHEME_SETTINGS.style.display = "none";
     MAIN_MENU.style.display = "flex";
 }
-function setColorSchemeToTricolor() {
-    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
-        TEXT.style.color = "black";
-        COPYRIGHT_HEADER.style.color = "black";
-        HEADER.style.backgroundColor = "red";
-        MAIN.style.backgroundColor = "limegreen";
-        FOOTER.style.backgroundColor = "blue";
+function pickRandomSquareThatIsYetToBeIterated() {
+    if (TO_BE_ITERATED.length <= 0) {
+        finishQuiz();
     }
-    else {
-        console.log("ERROR: Question's header, main, footer, and text apparently do not exist.");
+    let roll = Math.floor(Math.random() * TO_BE_ITERATED.length);
+    currentQuestion = TO_BE_ITERATED[roll];
+    currentQuestionOrdinal += 1;
+    TO_BE_ITERATED.splice(roll, 1);
+    return currentQuestion;
+}
+function displayQuestion(question) {
+    if (question && QUESTION_TEXT && QUESTION_IMAGE && SUBMIT_BUTTON) {
+        QUESTION_TEXT.textContent = currentQuestionOrdinal + ". " + question.text;
+        if (!question.imagePath) {
+            QUESTION_TEXT.textContent = "ERROR: Could not load the image. The current question's imagepath is probably null or undefined.";
+        }
+        else {
+            QUESTION_IMAGE.src = question.imagePath;
+        }
     }
 }
-function setColorSchemeToTriumvirate() {
-    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
-        TEXT.style.color = "black";
-        COPYRIGHT_HEADER.style.color = "black";
-        HEADER.style.backgroundColor = "antiquewhite";
-        MAIN.style.backgroundColor = "bisque";
-        FOOTER.style.backgroundColor = "wheat";
+function submitAnswer() {
+    if (currentQuestion.answers.includes(QUESTION_INPUT.value.toLowerCase())) {
+        SUBMIT_BUTTON.style.background = "green";
+        score += 1;
+        console.log("Good job! Correct answer! Score plus one! Current score: " + score);
+        ITERATED.push(currentQuestion);
+        displayQuestion(pickRandomSquareThatIsYetToBeIterated());
     }
     else {
-        console.log("ERROR: Question's header, main, footer, and text apparently do not exist.");
+        SUBMIT_BUTTON.style.background = "red";
+        console.log("Wrong! Incorrect answer! No new score added! Current score: " + score);
+        ITERATED.push(currentQuestion);
+        displayQuestion(pickRandomSquareThatIsYetToBeIterated());
     }
 }
-function setColorSchemeToLight() {
-    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
-        TEXT.style.color = "black";
-        COPYRIGHT_HEADER.style.color = "black";
-        HEADER.style.backgroundColor = "whitesmoke";
-        MAIN.style.backgroundColor = "white";
-        FOOTER.style.backgroundColor = "whitesmoke";
-    }
-    else {
-        console.log("ERROR: Question's header, main, footer, and text apparently do not exist.");
-    }
-}
-function setColorSchemeToDark() {
-    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
-        TEXT.style.color = "white";
-        COPYRIGHT_HEADER.style.color = "white";
-        HEADER.style.backgroundColor = "black";
-        MAIN.style.backgroundColor = "dimgray";
-        FOOTER.style.backgroundColor = "gray";
-    }
-    else {
-        console.log("ERROR: Question's header, main, footer, and text apparently do not exist.");
-    }
+function finishQuiz() {
+    GAME_MENU.style.display = "none";
+    END_RESULTS.style.display = "flex";
+    SCORE_ACQUIRED.textContent = score.toString();
+    SCORE_MAXIMUM.textContent = maxScore.toString();
+    PERCENTAGE.textContent = ((score / maxScore) * 100).toString();
 }
 const PRELOADED_IMAGES = [];
 function preloadImages() {
@@ -118,54 +125,94 @@ function preloadImages() {
         }
     });
 }
-function pickRandomUliceThatIsYetToBeIterated() {
-    if (TO_BE_ITERATED.length <= 0) {
-        finishQuiz();
+function setColorScheme(colorScheme) {
+    if (colorScheme == "tricolor") {
+        MAIN_MENU.style.backgroundColor = "white";
+        MAIN_MENU_TITLE.style.color = "black";
+        MAIN_MENU_SUBTITLE.style.color = "black";
+        COLORSCHEME_SETTINGS.style.backgroundColor = "white";
+        CHANGELOG.style.backgroundColor = "white";
+        START_BUTTON.style.backgroundColor = "red";
+        COLORSCHEME_BUTTON.style.backgroundColor = "limegreen";
+        CHANGELOG_BUTTON.style.backgroundColor = "blue";
+        SET_TRIUMVIRATE_BUTTON.disabled = true;
+        TRICOLOR_TITLE.style.color = "black";
+        TRIUMVIRATE_TITLE.style.color = "black";
+        LIGHT_TITLE.style.color = "black";
+        DARK_TITLE.style.color = "black";
+        HEADER.style.backgroundColor = "red";
+        QUESTION_TEXT.style.color = "black";
+        COPYRIGHT.style.color = "black";
+        MAIN.style.backgroundColor = "limegreen";
+        FOOTER.style.backgroundColor = "blue";
+        FOOT_TITLE.style.color = "white";
+        END_RESULTS.style.backgroundColor = "white";
+        END_TITLE.style.color = "black";
+        END_SUBTITLE.style.color = "black";
+        END_LETITLE.style.color = "black";
+        SCORE.style.color = "black";
+        PERCENT.style.color = "black";
     }
-    let roll = Math.floor(Math.random() * TO_BE_ITERATED.length);
-    currentQuestion = TO_BE_ITERATED[roll];
-    currentQuestionOrdinal += 1;
-    TO_BE_ITERATED.splice(roll, 1);
-    return currentQuestion;
-}
-function displayQuestion(question) {
-    if (question && TEXT && IMAGE && SUBMIT_BUTTON) {
-        TEXT.textContent = currentQuestionOrdinal + ". " + question.text;
-        if (!question.imagePath) {
-            TEXT.textContent = "ERROR: Could not load the image. The current question's imagepath is probably null or undefined.";
-        }
-        else {
-            if (question.imagePath == "images/adamusova_orlova.png" || question.imagePath == "images/na_olmovci.png" || question.imagePath == "images/f_s_tumy.png" || question.imagePath == "images/kratka.png") {
-                DISPATCHER16.style.display = "inline";
-            }
-            else {
-                DISPATCHER16.style.display = "none";
-            }
-            IMAGE.src = question.imagePath;
-        }
+    else if (colorScheme == "triumvirate") {
+        SET_TRIUMVIRATE_BUTTON.disabled = true;
     }
-}
-function submitAnswer() {
-    if (currentQuestion.answers.includes(INPUT.value.toLowerCase())) {
-        SUBMIT_BUTTON.style.background = "green";
-        score += 1;
-        console.log("Good job! Correct answer! Score plus one! Current score: " + score);
-        ITERATED.push(currentQuestion);
-        displayQuestion(pickRandomUliceThatIsYetToBeIterated());
+    else if (colorScheme == "light") {
+        MAIN_MENU.style.backgroundColor = "white";
+        MAIN_MENU_TITLE.style.color = "black";
+        MAIN_MENU_SUBTITLE.style.color = "black";
+        COLORSCHEME_SETTINGS.style.backgroundColor = "white";
+        CHANGELOG.style.backgroundColor = "white";
+        START_BUTTON.style.backgroundColor = "whitesmoke";
+        COLORSCHEME_BUTTON.style.backgroundColor = "whitesmoke";
+        CHANGELOG_BUTTON.style.backgroundColor = "whitesmoke";
+        SET_TRIUMVIRATE_BUTTON.disabled = true;
+        TRICOLOR_TITLE.style.color = "black";
+        TRIUMVIRATE_TITLE.style.color = "black";
+        LIGHT_TITLE.style.color = "black";
+        DARK_TITLE.style.color = "black";
+        HEADER.style.backgroundColor = "whitesmoke";
+        QUESTION_TEXT.style.color = "black";
+        COPYRIGHT.style.color = "black";
+        MAIN.style.backgroundColor = "white";
+        FOOTER.style.backgroundColor = "whitesmoke";
+        FOOT_TITLE.style.color = "black";
+        END_RESULTS.style.backgroundColor = "white";
+        END_TITLE.style.color = "black";
+        END_SUBTITLE.style.color = "black";
+        END_LETITLE.style.color = "black";
+        SCORE.style.color = "black";
+        PERCENT.style.color = "black";
+    }
+    else if (colorScheme == "dark") {
+        MAIN_MENU.style.backgroundColor = "black";
+        MAIN_MENU_TITLE.style.color = "white";
+        MAIN_MENU_SUBTITLE.style.color = "white";
+        COLORSCHEME_SETTINGS.style.backgroundColor = "black";
+        CHANGELOG.style.backgroundColor = "black";
+        START_BUTTON.style.backgroundColor = "dimgray";
+        COLORSCHEME_BUTTON.style.backgroundColor = "dimgray";
+        CHANGELOG_BUTTON.style.backgroundColor = "dimgray";
+        SET_TRIUMVIRATE_BUTTON.disabled = true;
+        TRICOLOR_TITLE.style.color = "white";
+        TRIUMVIRATE_TITLE.style.color = "white";
+        LIGHT_TITLE.style.color = "white";
+        DARK_TITLE.style.color = "white";
+        HEADER.style.backgroundColor = "black";
+        QUESTION_TEXT.style.color = "white";
+        COPYRIGHT.style.color = "white";
+        MAIN.style.backgroundColor = "dimgray";
+        FOOTER.style.backgroundColor = "gray";
+        FOOT_TITLE.style.color = "white";
+        END_RESULTS.style.backgroundColor = "black";
+        END_TITLE.style.color = "white";
+        END_SUBTITLE.style.color = "white";
+        END_LETITLE.style.color = "white";
+        SCORE.style.color = "white";
+        PERCENT.style.color = "white";
     }
     else {
-        SUBMIT_BUTTON.style.background = "red";
-        console.log("Wrong! Incorrect answer! No new score added! Current score: " + score);
-        ITERATED.push(currentQuestion);
-        displayQuestion(pickRandomUliceThatIsYetToBeIterated());
+        console.log("ERROR: String argument in setColorScheme(string) method not valid.");
     }
-}
-function finishQuiz() {
-    QUESTION.style.display = "none";
-    END_RESULTS.style.display = "flex";
-    SCORE_ACQUIRED.textContent = score.toString();
-    SCORE_MAXIMUM.textContent = maxScore.toString();
-    PERCENTAGE.textContent = ((score / maxScore) * 100).toString();
 }
 //-----------------------------------------------------------------------------------
 class Question {
@@ -188,343 +235,110 @@ class Question {
     }
 }
 const TO_BE_ITERATED = [];
-const MASARYKOVA_TRIDA = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/masarykova_trida.png", [
-    "masarykova třída", "masarykova trida",
-    "masarykova třida", "masarykova trída",
-    "masarykova tř.", "masarykova tř",
-    "masarykova tr.", "masarykova tr"
+//here cum the questions!
+const MASARYKOVO_OSTRAVA = new Question("Co je tohle za náměstí v Ostravě?", "images/masarykovo_ostrava.png", [
+    "masarykovo"
 ]);
-TO_BE_ITERATED.push(MASARYKOVA_TRIDA);
-const SEDMNACTEHO_LISTOPADU_ORLOVA = new Question("Co je tohle za ulici v Orlové?", "images/17_listopadu_orlova.png", [
-    "17.listopadu", "17. listopadu",
-    "sedmnacteho listopadu", "sedmnáctého listopadu",
-    "sedmnactého listopadu", "sedmnácteho listopadu"
+TO_BE_ITERATED.push(MASARYKOVO_OSTRAVA);
+const MASARYKOVO_KARVINA = new Question("Co je tohle za náměstí v Karviné?", "images/masarykovo_karvina.png", [
+    "masarykovo"
 ]);
-TO_BE_ITERATED.push(SEDMNACTEHO_LISTOPADU_ORLOVA);
-const KPT_JAROSE = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/kpt_jarose.png", [
-    "kpt. jaroše", "kpt jaroše", "kpt. jarose", "kpt jarose",
-    "kapitána jaroše", "kapitana jaroše",
-    "kapitána jarose", "kapitana jarose"
-]);
-TO_BE_ITERATED.push(KPT_JAROSE);
-const OSVOBOZENI = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/osvobozeni.png", [
-    "osvobození", "osvobozeni"
-]);
-TO_BE_ITERATED.push(OSVOBOZENI);
-const NA_STUCHLIKOVCI = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/na_stuchlikovci.png", [
-    "na stuchlíkovci", "na stuchlikovci"
-]);
-TO_BE_ITERATED.push(NA_STUCHLIKOVCI);
-const NA_VYHLIDCE = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/na_vyhlidce.png", [
-    "na vyhlídce", "na vyhlidce"
-]);
-TO_BE_ITERATED.push(NA_VYHLIDCE);
-const LESNI = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/lesni.png", [
-    "lesní", "lesni"
-]);
-TO_BE_ITERATED.push(LESNI);
-const KVETINOVA = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/kvetinova.png", [
-    "květinová", "květinova", "kvetinova", "kvetinová"
-]);
-TO_BE_ITERATED.push(KVETINOVA);
-const OKRUZNI = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/okruzni.png", [
-    "okružní", "okruzni", "okružni", "okruzní"
-]);
-TO_BE_ITERATED.push(OKRUZNI);
-const ENERGETIKU = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/energetiku.png", [
-    "energetiků", "energetiku"
-]);
-TO_BE_ITERATED.push(ENERGETIKU);
-const SKOLNI = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/skolni.png", [
-    "školní", "skolni", "školni", "skolní"
-]);
-TO_BE_ITERATED.push(SKOLNI);
-const U_MORAVY = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/u_moravy.png", [
-    "u moravy"
-]);
-TO_BE_ITERATED.push(U_MORAVY);
-const POLNI = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/polni.png", [
-    "polní", "polni"
-]);
-TO_BE_ITERATED.push(POLNI);
-const RYDULTOWSKA = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/rydultowska.png", [
-    "rydultowská", "rydultowska"
-]);
-TO_BE_ITERATED.push(RYDULTOWSKA);
-const SLEZSKA = new Question("Co je tohle za ulici v Porembě a Městě?", "images/slezska.png", [
-    "slezská", "slezska"
-]);
-TO_BE_ITERATED.push(SLEZSKA);
-const ZATISI = new Question("Co je tohle za ulici v Orlové-Lutyni a Porubě?", "images/zatisi.png", [
-    "zátiší", "zátiši", "zátisí", "zátisi",
-    "zatiši", "zatisí", "zatiší"
-]);
-TO_BE_ITERATED.push(ZATISI);
-const K_VENUSI = new Question("Co je tohle za ulici v Orlové-Lutyni?", "images/k_venusi.png", [
-    "k venuši", "k venusi"
-]);
-TO_BE_ITERATED.push(K_VENUSI);
-const ODLEHLA = new Question("Co je tohle za ulici v Horní Lutyni?", "images/odlehla.png", [
-    "odlehlá", "odlehla"
-]);
-TO_BE_ITERATED.push(ODLEHLA);
-const U_KAPLICKY = new Question("Co je tohle za ulici v Horní Lutyni?", "images/u_kaplicky.png", [
-    "u kapličky", "u kaplicky"
-]);
-TO_BE_ITERATED.push(U_KAPLICKY);
-const NA_OLMOVCI = new Question("Co je tohle za ulici v Horní Lutyni??", "images/na_olmovci.png", [
-    "na olmovci"
-]);
-TO_BE_ITERATED.push(NA_OLMOVCI);
-const F_S_TUMY = new Question("Co je tohle za ulici v Horní Lutyni na 5. etapě?", "images/f_s_tumy.png", [
-    "f. s. tůmy", "f.s. tůmy", "f s tůmy", "fs tůmy",
-    "f. s. tumy", "f.s. tumy", "f s tumy", "fs tumy",
-    "františka sokola tůmy", "františka sokola-tůmy",
-    "franty sokola tůmy", "franty sokola-tůmy",
-    "františka sokola tumy", "františka sokola-tumy",
-    "franty sokola tumy", "franty sokola-tumy",
-    "frantiska sokola tůmy", "frantiska sokola-tůmy"
-]);
-TO_BE_ITERATED.push(F_S_TUMY);
-const NADRAZNI_ORLOVA = new Question("Co je tohle za ulici v Orlové-Porubě a starém městě?", "images/nadrazni_orlova.png", [
-    "nádražní", "nádražni", "nádrazni", "nadrazni",
-    "nadražní", "nadražni", "nadrazní"
-]);
-TO_BE_ITERATED.push(NADRAZNI_ORLOVA);
-const TESINSKA = new Question("Co je tohle za ulici v Orlové-Porubě?", "images/tesinska_orlova.png", [
-    "těšínská", "těšínska", "těšinska", "těsinska", "tesinska",
-    "těsinska", "tešinska", "tesínska", "tesinská", "těsinská",
-    "tešínska", "těšinska"
-]);
-TO_BE_ITERATED.push(TESINSKA);
-const NADRAZNI_OSTRAVA = new Question("Co je tohle za ulici v Ostravě?", "images/nadrazni_ostrava.png", [
-    "nádražní", "nádražni", "nádrazni", "nadrazni",
-    "nadražní", "nadražni", "nadrazní"
-]);
-TO_BE_ITERATED.push(NADRAZNI_OSTRAVA);
-const DVACATEHOOSMEHO_RIJNA = new Question("Co je tohle za ulici v Ostravě?", "images/28_rijna.png", [
-    "28.října", "28 října", "28října",
-    "28.řijna", "28 řijna", "28řijna",
-    "28.rijna", "28 rijna", "28rijna",
-    "28.ríjna", "28 ríjna", "28ríjna",
-    "dvacatehoosmeho října", "dvacátéhoosmého října",
-    "dvacatehoosmeho řijna", "dvacátéhoosmého řijna",
-    "dvacatehoosmeho rijna", "dvacátéhoosmého rijna",
-    "dvacatehoosmeho ríjna", "dvacátéhoosmého ríjna",
-    "28. rijna"
+TO_BE_ITERATED.push(MASARYKOVO_KARVINA);
+const DVACATEHOOSMEHO_RIJNA = new Question("Co je tohle za náměstí v Orlové?", "images/28_rijna.png", [
+    "28r", "28 r", "28.r", "28r.", "28 .r", "28 r.", "28. r", "28.r.", "28 . r", "28 .r.", "28. r.", "28 . r.", "28. . r", "28rijen", "28rijna", "28říjen", "28října", "28 rijen", "28 rijna", "28 říjen", "28 října", "28. . r.", "28.rijen", "28.rijna", "28.říjen", "28.října", "28 .rijen", "28 .rijna", "28 .říjen", "28 .října", "28. rijen", "28. rijna", "28. říjen", "28. října", "28 . rijen", "28 . rijna", "28 . říjen", "28 . října", "28ho rijna", "28ho října", "28. . rijen", "28. . rijna", "28. . říjen", "28. . října", "dvacateho osmehor", "dvacateho osméhor", "dvacátého osmehor", "dvacátého osméhor", "dvacateho osmeho r", "dvacateho osmehor.", "dvacateho osmého r", "dvacateho osméhor.", "dvacátého osmeho r", "dvacátého osmehor.", "dvacátého osmého r", "dvacátého osméhor.", "dvacateho osmeho r.", "dvacateho osmeho. r", "dvacateho osmého r.", "dvacateho osmého. r", "dvacátého osmeho r.", "dvacátého osmeho. r", "dvacátého osmého r.", "dvacátého osmého. r", "dvacateho osmeho. r.", "dvacateho osmého. r.", "dvacátého osmeho. r.", "dvacátého osmého. r.", "dvacateho osmehorijen", "dvacateho osmehorijna", "dvacateho osmehoříjen", "dvacateho osmehoříjna", "dvacateho osméhorijen", "dvacateho osméhorijna", "dvacateho osméhoříjen", "dvacateho osméhoříjna", "dvacátého osmehorijen", "dvacátého osmehorijna", "dvacátého osmehoříjen", "dvacátého osmehoříjna", "dvacátého osméhorijen", "dvacátého osméhorijna", "dvacátého osméhoříjen", "dvacátého osméhoříjna", "dvacateho osmeho rijen", "dvacateho osmeho rijna", "dvacateho osmeho říjen", "dvacateho osmeho října", "dvacateho osmého rijen", "dvacateho osmého rijna", "dvacateho osmého říjen", "dvacateho osmého října", "dvacátého osmeho rijen", "dvacátého osmeho rijna", "dvacátého osmeho říjen", "dvacátého osmeho října", "dvacátého osmého rijen", "dvacátého osmého rijna", "dvacátého osmého říjen", "dvacátého osmého října", "dvacateho osmeho. rijen", "dvacateho osmeho. rijna", "dvacateho osmeho. říjen", "dvacateho osmeho. října", "dvacateho osmého. rijen", "dvacateho osmého. rijna", "dvacateho osmého. říjen", "dvacateho osmého. října", "dvacátého osmeho. rijen", "dvacátého osmeho. rijna", "dvacátého osmeho. říjen", "dvacátého osmeho. října", "dvacátého osmého. rijen", "dvacátého osmého. rijna", "dvacátého osmého. říjen", "dvacátého osmého. října"
 ]);
 TO_BE_ITERATED.push(DVACATEHOOSMEHO_RIJNA);
-const OPAVSKA = new Question("Co je tohle za ulici v západní Ostravě?", "images/opavska.png", [
-    "opavská", "opavska"
+const ALSOVO = new Question("Co je tohle za náměstí?", "images/alsovo.png", [
+    "alšovo", "alsovo"
 ]);
-TO_BE_ITERATED.push(OPAVSKA);
-const PUSTKOVECKA = new Question("Co je tohle za ulici v Pustkovci?", "images/pustkovecka.png", [
-    "pustkovecká", "pustkovecka"
+TO_BE_ITERATED.push(ALSOVO);
+const NEZVALOVO = new Question("Co je tohle za náměstí?", "images/nezvalovo.png", [
+    "nezvalovo"
 ]);
-TO_BE_ITERATED.push(PUSTKOVECKA);
-const NABREZI_SPB = new Question("Co je tohle za ulici v Ostravě-Porubě?", "images/nabrezi_spb.png", [
-    "nspb", "n spb", "n.spb", "n. spb", "n s p b", "n.s.p.b", "n s p b.", "n s p. b", "n s. p b", "n. s p b", "n.s.p.b.", "n s p. b.", "n s. p b.", "n s. p. b", "n sv. p b", "n. s p b.", "n. s p. b", "n. s. p b", "n s p boj.", "n s. p. b.", "n sv. p b.", "n sv. p. b", "n svazu pb", "n. s p. b.", "n. s. p b.", "n. s. p. b", "n. sv. p b", "nabrezi pb", "nábřezi pb", "nábřezí pb", "nábřeží pb", "n s p. boj.", "n s prot. b", "n s. p boj.", "n sv. p. b.", "n svazu p b", "n. s p boj.", "n. s. p. b.", "n. sv. p b.", "n. sv. p. b", "n. svazu pb", "nabrezi p b", "nabrezi spb", "nábřezi p b", "nábřezi spb", "nábřezí p b", "nábřezí spb", "nábřeží p b", "nábřeží spb", "n s prot. b.", "n s. p. boj.", "n s. prot. b", "n sv. p boj.", "n svazu p b.", "n svazu p. b", "n. s p. boj.", "n. s prot. b", "n. s. p boj.", "n. sv. p. b.", "n. svazu p b", "n.svazu p.b.", "nabrezi p.b.", "nábřezi p.b.", "nábřezí p.b.", "nábřeží p.b.", "n s. prot. b.", "n sv. p. boj.", "n sv. prot. b", "n svazu p. b.", "n. s prot. b.", "n. s. p. boj.", "n. s. prot. b", "n. sv. p boj.", "n. svazu p b.", "n. svazu p. b", "n. svazu p.b.", "nabrezi s p b", "nábřezi s p b", "nábřezí s p b", "nábřeží s p b", "n s prot. boj.", "n sv. prot. b.", "n svazu p boj.", "n. s. prot. b.", "n. sv. p. boj.", "n. sv. prot. b", "n. svazu p. b.", "nabrezi s.p.b.", "nábřezi s.p.b.", "nábřezí s.p.b.", "nábřeží s.p.b.", "n s p bojovniku", "n s p bojovníků", "n s. prot. boj.", "n svazu p. boj.", "n svazu prot. b", "n. s prot. boj.", "n. sv. prot. b.", "n. svazu p boj.", "n s p. bojovniku", "n s p. bojovníků", "n s. p bojovniku", "n s. p bojovníků", "n sv. prot. boj.", "n svazu prot. b.", "n. s p bojovniku", "n. s p bojovníků", "n. s. prot. boj.", "n. svazu p. boj.", "n. svazu prot. b", "nabrezi svazu pb", "nábřezi svazu pb", "nábřezí svazu pb", "nábřeží svazu pb", "n s. p. bojovniku", "n s. p. bojovníků", "n sv. p bojovniku", "n sv. p bojovníků", "n. s p. bojovniku", "n. s p. bojovníků", "n. s. p bojovniku", "n. s. p bojovníků", "n. sv. prot. boj.", "n. svazu prot. b.", "nabrezi svazu p b", "nábřezi svazu p b", "nábřezí svazu p b", "nábřeží svazu p b", "n sv. p. bojovniku", "n sv. p. bojovníků", "n svazu prot. boj.", "n. s. p. bojovniku", "n. s. p. bojovníků", "n. sv. p bojovniku", "n. sv. p bojovníků", "nabrezi svazu p.b.", "nábřezi svazu p.b.", "nábřezí svazu p.b.", "nábřeží svazu p.b.", "n s prot. bojovniku", "n s prot. bojovníků", "n svazu p bojovniku", "n svazu p bojovníků", "n. sv. p. bojovniku", "n. sv. p. bojovníků", "n. svazu p bojovniku", "n. svazu p bojovníků", "n. sv. p. bojovniku", "n. sv. p. bojovníků", "n. svazu p. bojovniku", "n. svazu p. bojovníků", "nabrezi svazu s p b", "nábřezi svazu s p b", "nábřezí svazu s p b", "nábřeží svazu s p b", "n s. prot. bojovniku", "n s. prot. bojovníků", "n sv. prot. bojovniku", "n sv. prot. bojovníků", "n svazu prot. bojovniku", "n svazu prot. bojovníků", "n. s. prot. bojovniku", "n. s. prot. bojovníků", "n. sv. prot. bojovniku", "n. sv. prot. bojovníků", "n. svazu prot. bojovniku", "n. svazu prot. bojovníků", "nabrezi svazu s.p.b.", "nábřezi svazu s.p.b.", "nábřezí svazu s.p.b.", "nábřeží svazu s.p.b.", "n sv. prot. bojovniku", "n sv. prot. bojovníků", "n. sv. prot. bojovniku", "n. sv. prot. bojovníků", "n. svazu prot. bojovniku", "n. svazu prot. bojovníků", "nabrezi svazu protifašistických bojovníků", "nabrezi svazu protifašistických bojovniku", "nabrezi svazu protifašistických bojovniků", "nabrezi svazu protifašistických bojovníku", "nabrezi svazu protifasistickych bojovniku", "nabrezi svazu protifasistickych bojovniků", "nabrezi svazu protifasistickych bojovníku", "nabrezi svazu protifasistickych bojovníků", "nabrezi svazu protifasistických bojovniku", "nabrezi svazu protifasistických bojovniků", "nabrezi svazu protifasistických bojovníku", "nabrezi svazu protifasistických bojovníků", "nabrezi svazu protifašistickych bojovniku", "nabrezi svazu protifašistickych bojovniků", "nabrezi svazu protifašistickych bojovníku", "nabrezi svazu protifašistickych bojovníků", "nábřezi svazu protifašistických bojovníků", "nábřezi svazu protifašistických bojovniku", "nábřezi svazu protifašistických bojovniků", "nábřezi svazu protifašistických bojovníku", "nábřezi svazu protifasistickych bojovniku", "nábřezi svazu protifasistickych bojovniků", "nábřezi svazu protifasistickych bojovníku", "nábřezi svazu protifasistickych bojovníků", "nábřezi svazu protifasistických bojovniku", "nábřezi svazu protifasistických bojovniků", "nábřezi svazu protifasistických bojovníku", "nábřezi svazu protifasistických bojovníků", "nábřezi svazu protifašistickych bojovniku", "nábřezi svazu protifašistickych bojovniků", "nábřezi svazu protifašistickych bojovníku", "nábřezi svazu protifašistickych bojovníků", "nábřezí svazu protifašistických bojovníků", "nábřezí svazu protifašistických bojovniku", "nábřezí svazu protifašistických bojovniků", "nábřezí svazu protifašistických bojovníku", "nábřezí svazu protifasistickych bojovniku", "nábřezí svazu protifasistickych bojovniků", "nábřezí svazu protifasistickych bojovníku", "nábřezí svazu protifasistickych bojovníků", "nábřezí svazu protifasistických bojovniku", "nábřezí svazu protifasistických bojovniků", "nábřezí svazu protifasistických bojovníku", "nábřezí svazu protifasistických bojovníků", "nábřezí svazu protifašistickych bojovniku", "nábřezí svazu protifašistickych bojovniků", "nábřezí svazu protifašistickych bojovníku", "nábřezí svazu protifašistickych bojovníků", "nábřeži svazu protifašistických bojovníků", "nábřeži svazu protifašistických bojovniku", "nábřeži svazu protifašistických bojovniků", "nábřeži svazu protifašistických bojovníku", "nábřeži svazu protifasistickych bojovniku", "nábřeži svazu protifasistickych bojovniků", "nábřeži svazu protifasistickych bojovníku", "nábřeži svazu protifasistickych bojovníků", "nábřeži svazu protifasistických bojovniku", "nábřeži svazu protifasistických bojovniků", "nábřeži svazu protifasistických bojovníku", "nábřeži svazu protifasistických bojovníků", "nábřeži svazu protifašistickych bojovniku", "nábřeži svazu protifašistickych bojovniků", "nábřeži svazu protifašistickych bojovníku", "nábřeži svazu protifašistickych bojovníků", "nábřeží svazu protifašistických bojovníků", "nábřeží svazu protifašistických bojovniku", "nábřeží svazu protifašistických bojovniků", "nábřeží svazu protifašistických bojovníku", "nábřeží svazu protifasistickych bojovniku", "nábřeží svazu protifasistickych bojovniků", "nábřeží svazu protifasistickych bojovníku", "nábřeží svazu protifasistickych bojovníků", "nábřeží svazu protifasistických bojovniku", "nábřeží svazu protifasistických bojovniků", "nábřeží svazu protifasistických bojovníku", "nábřeží svazu protifasistických bojovníků", "nábřeží svazu protifašistickych bojovniku", "nábřeží svazu protifašistickych bojovniků", "nábřeží svazu protifašistickych bojovníku", "nábřeží svazu protifašistickych bojovníků"
+TO_BE_ITERATED.push(NEZVALOVO);
+const BOZENY_NEMCOVE = new Question("Co je tohle za náměstí?", "images/bozeny_nemcove.png", [
+    "b n", "b n.", "b. n", "b. n.", "boz. n", "bož. n", "b nemc.", "b němc.", "boz. n.", "bozky n", "bož. n.", "božky n", "b. nemc.", "b. němc.", "bozeny n", "bozky n.", "boženy n", "božky n.", "b nemcove", "b němcové", "b.nemcove", "b.němcové", "bozeny n.", "boženy n.", "b. nemcove", "b. němcové", "boz. nemc.", "boz. němc.", "bož. nemc.", "bož. němc.", "bozky nemc.", "bozky němc.", "božky nemc.", "božky němc.", "boz. nemcove", "boz. němcové", "bozeny nemc.", "bozeny němc.", "bož. nemcove", "bož. němcové", "boženy nemc.", "boženy němc.", "bozky nemcove", "bozky němcové", "božky nemcove", "božky němcové", "bozeny nemcove", "bozeny němcové", "boženy nemcove", "boženy němcové", "božky. němcové", "boženy. němcové"
 ]);
-TO_BE_ITERATED.push(NABREZI_SPB);
-const HLAVNI_TRIDA = new Question("Co je tohle za ulici v Ostravě-Porubě?", "images/hlavni_trida.png", [
-    "hlavní třída", "hlavni trida", "hlavní třida",
-    "hlavni třída", "hlavní trída", "hlavni třida"
+TO_BE_ITERATED.push(BOZENY_NEMCOVE);
+const HAVLICKOVO = new Question("Co je tohle za náměstí?", "images/havlickovo.png", [
+    "havlíčkovo", "havlíckovo", "havličkovo", "havlickovo"
 ]);
-TO_BE_ITERATED.push(HLAVNI_TRIDA);
-const HORNI = new Question("Co je tohle za ulici v Ostravě???", "images/horni.png", [
-    "horní", "horni"
+TO_BE_ITERATED.push(HAVLICKOVO);
+const MARIANSKE = new Question("Co je tohle za náměstí?", "images/marianske.png", [
+    "mariánské", "marianske", "mariánske", "marianské"
 ]);
-TO_BE_ITERATED.push(HORNI);
-const AVIATIKU = new Question("Co je tohle za ulici v jížní Hrabůvce?", "images/aviatiku.png", [
-    "aviatiků", "aviatiku"
+TO_BE_ITERATED.push(MARIANSKE);
+const MIROVE = new Question("Co je tohle za náměstí?", "images/mirove.png", [
+    "mírové", "mírove", "mirové", "mirove"
 ]);
-TO_BE_ITERATED.push(AVIATIKU);
-const KRESTOVA = new Question("Co je tohle za ulici v jížní Hrabůvce??", "images/krestova.png", [
-    "krestova", "krestova"
+TO_BE_ITERATED.push(MIROVE);
+const JIRIHO_Z_PODEBRAD = new Question("Co je tohle za náměstí?", "images/jiriho_z_podebrad.png", [
+    "jir z podeb", "jir z poděb", "jiriho z p.", "jiř z podeb", "jiř z poděb", "jiřího z p.", "jir z podeb.", "jir z poděb.", "jir z. podeb", "jir z. poděb", "jir. z podeb", "jir. z poděb", "jiř z podeb.", "jiř z poděb.", "jiř z. podeb", "jiř z. poděb", "jiř. z podeb", "jiř. z poděb", "j. z podebrad", "j. z poděbrad", "jir z. podeb.", "jir z. poděb.", "jir. z podeb.", "jir. z poděb.", "jir. z. podeb", "jir. z. poděb", "jiř z. podeb.", "jiř z. poděb.", "jiř. z podeb.", "jiř. z poděb.", "jiř. z. podeb", "jiř. z. poděb", "jir z podebrad", "jir z poděbrad", "jir. z. podeb.", "jir. z. poděb.", "jiriho z podeb", "jiriho z poděb", "jiř z podebrad", "jiř z poděbrad", "jiř. z. podeb.", "jiř. z. poděb.", "jiřího z podeb", "jiřího z poděb", "jir z. podebrad", "jir z. poděbrad", "jir. z podebrad", "jir. z poděbrad", "jiriho z podeb.", "jiriho z poděb.", "jiriho z. podeb", "jiriho z. poděb", "jiř z. podebrad", "jiř z. poděbrad", "jiř. z podebrad", "jiř. z poděbrad", "jiřího z podeb.", "jiřího z poděb.", "jiřího z. podeb", "jiřího z. poděb", "jir. z. podebrad", "jir. z. poděbrad", "jiriho z. podeb.", "jiriho z. poděb.", "jiř. z. podebrad", "jiř. z. poděbrad", "jiřího z. podeb.", "jiřího z. poděb.", "jiriho z podebrad", "jiriho z poděbrad", "jiřího z podebrad", "jiřího z poděbrad", "jiriho z. podebrad", "jiriho z. poděbrad", "jiřího z. podebrad", "jiřího z. poděbrad"
 ]);
-TO_BE_ITERATED.push(KRESTOVA);
-const DR_MARTINKA = new Question("Co je tohle za ulici v Ostravě-Hrabůvce?", "images/dr_martinka.png", [
-    "dr martínka", "dr martinka", "doktora martínka",
-    "doktora martinka", "dr.martínka", "dr.martinka",
-    "dr. martínka", "dr. martinka"
+TO_BE_ITERATED.push(JIRIHO_Z_PODEBRAD);
+const SNP = new Question("Co je tohle za náměstí?", "images/snp.png", [
+    "snp", "snp.", "s n p", "s.n.p", "s.n.p.", "slov národ p.", "slov narod. p.", "slov národ. p.", "slov. národ p.", "slovenskeho np", "slovenského np", "slov n povstani", "slov. narod. p.", "slov. národ. p.", "slov národ povst", "slov narod. povst", "slov narodniho p.", "slov narodního p.", "slov národ povst.", "slov národ. povst", "slov národniho p.", "slov národního p.", "slov. n. povstání", "slov. národ povst", "slovens. národ p.", "slovenskeho n. p.", "slovenského n. p.", "slov narod. povst.", "slov národ. povst.", "slov. narod. povst", "slov. narodniho p.", "slov. narodního p.", "slov. národ povst.", "slov. národ. povst", "slov. národniho p.", "slov. národního p.", "slovens. narod. p.", "slovens. národ. p.", "slov narod povstani", "slov národ povstani", "slov národ povstání", "slov. narod. povst.", "slov. národ. povst.", "slov narod. povstani", "slov narod. povstání", "slov narodniho povst", "slov narodního povst", "slov národ. povstani", "slov národ. povstání", "slov národniho povst", "slov národního povst", "slov. národ povstani", "slov. národ povstání", "slovens. národ povst", "slovenskeho národ p.", "slovenského národ p.", "s. narodniho povstani", "s. národního povstání", "slov narodniho povst.", "slov narodního povst.", "slov národniho povst.", "slov národního povst.", "slov. narod. povstani", "slov. narod. povstání", "slov. narodniho povst", "slov. narodního povst", "slov. národ. povstani", "slov. národ. povstání", "slov. národniho povst", "slov. národního povst", "slovens. narod. povst", "slovens. narodniho p.", "slovens. narodního p.", "slovens. národ povst.", "slovens. národ. povst", "slovens. národniho p.", "slovens. národního p.", "slovenskeho narod. p.", "slovenskeho národ. p.", "slovenského narod. p.", "slovenského národ. p.", "slov. narodniho povst.", "slov. narodního povst.", "slov. národniho povst.", "slov. národního povst.", "slovens. narod. povst.", "slovens. národ. povst.", "slov narodniho povstani", "slov narodniho povstání", "slov narodního povstani", "slov narodního povstání", "slov národniho povstani", "slov národniho povstání", "slov národního povstani", "slov národního povstání", "slovens. národ povstani", "slovens. národ povstání", "slovenskeho národ povst", "slovenského národ povst", "slov. narodniho povstani", "slov. narodniho povstání", "slov. narodního povstani", "slov. narodního povstání", "slov. národniho povstani", "slov. národniho povstání", "slov. národního povstani", "slov. národního povstání", "slovens. narod. povstani", "slovens. narod. povstání", "slovens. narodniho povst", "slovens. narodního povst", "slovens. národ. povstani", "slovens. národ. povstání", "slovens. národniho povst", "slovens. národního povst", "slovenskeho narod. povst", "slovenskeho narodniho p.", "slovenskeho narodního p.", "slovenskeho národ povst.", "slovenskeho národ. povst", "slovenskeho národniho p.", "slovenskeho národního p.", "slovenského narod. povst", "slovenského narodniho p.", "slovenského narodního p.", "slovenského národ povst.", "slovenského národ. povst", "slovenského národniho p.", "slovenského národního p.", "slovens. narodniho povst.", "slovens. narodního povst.", "slovens. národniho povst.", "slovens. národního povst.", "slovenskeho narod. povst.", "slovenskeho národ. povst.", "slovenského narod. povst.", "slovenského národ. povst.", "slovenskeho národ povstani", "slovenskeho národ povstání", "slovenského národ povstani", "slovenského národ povstání", "slovens. narodniho povstani", "slovens. narodniho povstání", "slovens. narodního povstani", "slovens. narodního povstání", "slovens. národniho povstani", "slovens. národniho povstání", "slovens. národního povstani", "slovens. národního povstání", "slovenskeho narod. povstani", "slovenskeho narod. povstání", "slovenskeho narodniho povst", "slovenskeho narodního povst", "slovenskeho národ. povstani", "slovenskeho národ. povstání", "slovenskeho národniho povst", "slovenskeho národního povst", "slovenského narod. povstani", "slovenského narod. povstání", "slovenského narodniho povst", "slovenského narodního povst", "slovenského národ. povstani", "slovenského národ. povstání", "slovenského národniho povst", "slovenského národního povst", "slovenskeho narodniho povst.", "slovenskeho narodního povst.", "slovenskeho národniho povst.", "slovenskeho národního povst.", "slovenského narodniho povst.", "slovenského narodního povst.", "slovenského národniho povst.", "slovenského národního povst.", "slovenskeho narodniho povstani", "slovenskeho narodniho povstání", "slovenskeho narodního povstani", "slovenskeho narodního povstání", "slovenskeho národniho povstani", "slovenskeho národniho povstání", "slovenskeho národního povstani", "slovenskeho národního povstání", "slovenského narodniho povstani", "slovenského narodniho povstání", "slovenského narodního povstani", "slovenského narodního povstání", "slovenského národniho povstani", "slovenského národniho povstání", "slovenského národního povstani", "slovenského národního povstání"
 ]);
-TO_BE_ITERATED.push(DR_MARTINKA);
-const KLEGOVA = new Question("Co je tohle za ulici ve střední Hrabůvce?", "images/klegova.png", [
-    "klegova"
+TO_BE_ITERATED.push(SNP);
+const STARE = new Question("Co je tohle za náměstí?", "images/stare.png", [
+    "staré", "stare"
 ]);
-TO_BE_ITERATED.push(KLEGOVA);
-const MUGLINOVSKA = new Question("Co je tohle za ulici v Ostravě?", "images/muglinovska.png", [
-    "muglinovská", "muglinovska"
+TO_BE_ITERATED.push(STARE);
+const MICHALSKE = new Question("Co je tohle za náměstí?", "images/michalske.png", [
+    "michálské", "michalske", "michálske", "michalské"
 ]);
-TO_BE_ITERATED.push(MUGLINOVSKA);
-const ORLOVSKA_OSTRAVA = new Question("Co je tohle za ulici v Ostravě?", "images/orlovska_ostrava.png", [
-    "orlovská", "orlovska"
+TO_BE_ITERATED.push(MICHALSKE);
+const MIRU = new Question("Co je tohle za náměstí?", "images/miru.png", [
+    "míru", "miru"
 ]);
-TO_BE_ITERATED.push(ORLOVSKA_OSTRAVA);
-const ORLOVSKA_RYCHVALD = new Question("Co je tohle za ulici v Rychvaldě?", "images/orlovska_rychvald.png", [
-    "orlovská", "orlovska"
+TO_BE_ITERATED.push(MIRU);
+const SMETANOVO = new Question("Co je tohle za náměstí?", "images/smetanovo.png", [
+    "smetanovo"
 ]);
-TO_BE_ITERATED.push(ORLOVSKA_RYCHVALD);
-const PROVAZNICKA = new Question("Co je tohle za ulici v Hrabůvce?", "images/provaznicka.png", [
-    "provaznická", "provaznicka"
+TO_BE_ITERATED.push(SMETANOVO);
+const PARTYZANSKE = new Question("Co je tohle za náměstí?", "images/partyzanske.png", [
+    "partyzánské", "partyzanske", "partyzánske", "partyzanské",
+    "partzyánské", "partzyanske", "partzyánske", "partzyanské"
 ]);
-TO_BE_ITERATED.push(PROVAZNICKA);
-const ORACOVA = new Question("Co je tohle za ulici v jížní Hrabůvce??", "images/oracova.png", [
-    "oráčova", "oracova", "orácova", "oračova"
+TO_BE_ITERATED.push(PARTYZANSKE);
+const SVATOPLUKA_CECHA = new Question("Co je tohle za náměstí?", "images/svatopluka_cecha.png", [
+    "s č", "s. č", "s. č.", "svat č", "svat č.", "svat. č", "s. cech.", "s. cecha", "s. čech.", "s. čecha", "svat. č.", "svatopl č", "svat cech.", "svat cecha", "svat čech.", "svat čecha", "svatopl č.", "svatopl. č", "svat. cech.", "svat. cecha", "svat. čech.", "svat. čecha", "svatopl. č.", "svatopluka č", "svatopl cech.", "svatopl cecha", "svatopl čech.", "svatopl čecha", "svatopl.cecha", "svatopl.čecha", "svatopluka č.", "svatopl. cech.", "svatopl. cecha", "svatopl. čech.", "svatopl. čecha", "svatopluka cech.", "svatopluka cecha", "svatopluka čech.", "svatopluka čecha", "svatopluka. cecha", "svatopluka. čecha"
 ]);
-TO_BE_ITERATED.push(ORACOVA);
-const VARENSKA = new Question("Co je tohle za ulici v Moravské Ostravě??", "images/varenska.png", [
-    "varenská", "varenska"
+TO_BE_ITERATED.push(SVATOPLUKA_CECHA);
+const DR_EDVARDA_BENESE = new Question("Co je tohle za náměstí?", "images/dr_edvarda_benese.png", [
+    "eb", "deb", "e.b", "e.b.", "dr eb", "dr.eb", "dre b", "dr e b", "dr.e b", "dre b.", "dre. b", "dr e b.", "dr e. b", "dr. e b", "dr.e b.", "dr.e. b", "dr.e.b.", "dre. b.", "dredv b", "dr e. b.", "dr edv b", "dr. e b.", "dr. e. b", "dr. e.b.", "dr.e. b.", "dr.edv b", "dredv b.", "dredv. b", "e beneše", "dokt. e b", "dr beneše", "dr edv b.", "dr edv. b", "dr. e. b.", "dr. edv b", "dr.edv b.", "dr.edv. b", "dre benes", "dre beneš", "dredv. b.", "e. benese", "e. beneše", "dokt. e b.", "dokt. e. b", "doktor e b", "dr e benes", "dr e beneš", "dr edv. b.", "dr. edv b.", "dr. edv. b", "dr.e benes", "dr.e beneš", "dr.edv. b.", "dre benese", "dre beneše", "dre. benes", "dre. beneš", "dredvard b", "edvarda b.", "dokt. e. b.", "dokt. edv b", "doktor e b.", "doktor e. b", "dr e benese", "dr e beneše", "dr e. benes", "dr e. beneš", "dr e.beneše", "dr edvard b", "dr. e benes", "dr. e beneš", "dr. edv. b.", "dr. edvarda", "dr.e benese", "dr.e beneše", "dr.e. benes", "dr.e. beneš", "dr.e.benese", "dr.e.beneše", "dr.edvard b", "dre. benese", "dre. beneše", "dredv benes", "dredv beneš", "dredvard b.", "dredvarda b", "edv. benese", "edv. beneše", "dokt. edv b.", "dokt. edv. b", "doktor e. b.", "doktor edv b", "dr e. benese", "dr e. beneše", "dr edv benes", "dr edv beneš", "dr edvard b.", "dr edvarda b", "dr. e benese", "dr. e beneše", "dr. e. benes", "dr. e. beneš", "dr. edvard b", "dr.e. benese", "dr.e. beneše", "dr.edv benes", "dr.edv beneš", "dr.edvard b.", "dr.edvarda b", "dredv benese", "dredv beneše", "dredv. benes", "dredv. beneš", "dredvard a b", "dredvarda b.", "dokt. e benes", "dokt. e beneš", "dokt. edv. b.", "doktor edv b.", "doktor edv. b", "dr edv benese", "dr edv beneše", "dr edv. benes", "dr edv. beneš", "dr edvard a b", "dr edvarda b.", "dr. e. benese", "dr. e. beneše", "dr. edv benes", "dr. edv beneš", "dr. edvard b.", "dr. edvarda b", "dr.edv benese", "dr.edv beneše", "dr.edv. benes", "dr.edv. beneš", "dr.edv.benese", "dr.edv.beneše", "dr.edvard a b", "dr.edvarda b.", "dredv. benese", "dredv. beneše", "dredvard a b.", "dokt. e benese", "dokt. e beneše", "dokt. e. benes", "dokt. e. beneš", "dokt. edvard b", "doktor e benes", "doktor e beneš", "doktor edv. b.", "dr edv. benese", "dr edv. beneše", "dr edvard a b.", "dr. edv benese", "dr. edv beneše", "dr. edv. benes", "dr. edv. beneš", "dr. edvard a b", "dr. edvarda b.", "dr.edv. benese", "dr.edv. beneše", "dr.edvard a b.", "dredvard benes", "dredvard beneš", "edvarda benese", "edvarda beneše", "dokt. e. benese", "dokt. e. beneše", "dokt. edv benes", "dokt. edv beneš", "dokt. edvard b.", "dokt. edvarda b", "doktor e benese", "doktor e beneše", "doktor e. benes", "doktor e. beneš", "doktor edvard b", "dr edvard benes", "dr edvard beneš", "dr. edv. benese", "dr. edv. beneše", "dr. edvard a b.", "dr.edvard benes", "dr.edvard beneš", "dredvard benese", "dredvard beneše", "dredvarda benes", "dredvarda beneš", "edvard a benese", "edvard a beneše", "dokt. edv benese", "dokt. edv beneše", "dokt. edv. benes", "dokt. edv. beneš", "dokt. edvard a b", "dokt. edvarda b.", "doktor e. benese", "doktor e. beneše", "doktor edv benes", "doktor edv beneš", "doktor edvard b.", "doktor edvarda b", "dr edvard benese", "dr edvard beneše", "dr edvarda benes", "dr edvarda beneš", "dr. edvard benes", "dr. edvard beneš", "dr.edvard benese", "dr.edvard beneše", "dr.edvarda benes", "dr.edvarda beneš", "dredvard a benes", "dredvard a beneš", "dredvarda benese", "dredvarda beneše", "dokt. edv. benese", "dokt. edv. beneše", "dokt. edvard a b.", "doktor edv benese", "doktor edv beneše", "doktor edv. benes", "doktor edv. beneš", "doktor edvard a b", "doktor edvarda b.", "dr edvard a benes", "dr edvard a beneš", "dr edvarda benese", "dr edvarda beneše", "dr. edvard benese", "dr. edvard beneše", "dr. edvarda benes", "dr. edvarda beneš", "dr.edvard a benes", "dr.edvard a beneš", "dr.edvarda benese", "dr.edvarda beneše", "dredvard a benese", "dredvard a beneše", "dokt. edvard benes", "dokt. edvard beneš", "doktor edv. benese", "doktor edv. beneše", "doktor edvard a b.", "dr edvard a benese", "dr edvard a beneše", "dr. edvard a benes", "dr. edvard a beneš", "dr. edvarda benese", "dr. edvarda beneše", "dr.edvard a benese", "dr.edvard a beneše", "dokt. edvard benese", "dokt. edvard beneše", "dokt. edvarda benes", "dokt. edvarda beneš", "doktor edvard benes", "doktor edvard beneš", "dr. edvard a benese", "dr. edvard a beneše", "dokt. edvard a benes", "dokt. edvard a beneš", "dokt. edvarda benese", "dokt. edvarda beneše", "doktor edvard benese", "doktor edvard beneše", "doktor edvarda benes", "doktor edvarda beneš", "dokt. edvard a benese", "dokt. edvard a beneše", "doktor edvard a benes", "doktor edvard a beneš", "doktor edvarda benese", "doktor edvarda beneše", "doktor edvard a benese", "doktor edvard a beneše"
 ]);
-TO_BE_ITERATED.push(VARENSKA);
-const CESKOBRATRSKA = new Question("Co je tohle za ulici v centru Ostravy??", "images/ceskobratrska.png", [
-    "českobratrská", "ceskobratrska", "českobratrska",
-    "ceskobratrská"
+TO_BE_ITERATED.push(DR_EDVARDA_BENESE);
+const PROKESOVO = new Question("Co je tohle za náměstí?", "images/prokesovo.png", [
+    "prokešovo", "prokesovo"
 ]);
-TO_BE_ITERATED.push(CESKOBRATRSKA);
-const U_PRODEJNY = new Question("Co je tohle za ulici ve střední Hrabůvce??", "images/u_prodejny.png", [
-    "u prodejny"
+TO_BE_ITERATED.push(PROKESOVO);
+const HUSOVO = new Question("Co je tohle za náměstí?", "images/husovo.png", [
+    "husovo", "husové", "husove"
 ]);
-TO_BE_ITERATED.push(U_PRODEJNY);
-const NA_MYTE = new Question("Co je tohle za mini ulici ve střední Hrabůvce??", "images/na_myte.png", [
-    "na mýtě", "na mýte", "na mytě", "na myte"
+TO_BE_ITERATED.push(HUSOVO);
+const JURIJE_GAGARINA = new Question("Co je tohle za náměstí?", "images/jurije_gagarina.png", [
+    "jg", "j g", "j.g", "jg.", "j g.", "j. g", "j.g.", "jurg", "j. g.", "jur g", "jur.g", "jurg.", "jur g.", "jur. g", "jur.g.", "jur. g.", "jurijeg", "jurije g", "jurijeg.", "jgagarina", "jurije g.", "j gagarina", "j.gagarina", "j. gagarina", "jurgagarina", "jur gagarina", "jur.gagarina", "jur. gagarina", "jurijegagarina", "jurije gagarina", "jurije. gagarina", "yuriho gagarina", "yuri gagarina", "yurije gagarina", "yuriye gagarina"
 ]);
-TO_BE_ITERATED.push(NA_MYTE);
-const NA_FOJTSTVI = new Question("Co je tohle za mini ulici ve střední Hrabůvce?", "images/na_fojtstvi.png", [
-    "na fojtství", "na fojtstvi", "na fojctvi", "na fojctví",
-    "na foictví", "na foictvi"
+TO_BE_ITERATED.push(JURIJE_GAGARINA);
+const KOSTELNI = new Question("Co je tohle za náměstí?", "images/kostelni.png", [
+    "kostelní", "kostelni"
 ]);
-TO_BE_ITERATED.push(NA_FOJTSTVI);
-const MITUSOVA = new Question("Co je tohle za ulici v západní Hrabůvce?", "images/mitusova.png", [
-    "mitušova", "mitusova"
-]);
-TO_BE_ITERATED.push(MITUSOVA);
-const U_LESA = new Question("Co je tohle za ulici v západní Hrabůvce??", "images/u_lesa.png", [
-    "u lesa"
-]);
-TO_BE_ITERATED.push(U_LESA);
-const KRAKOVSKA = new Question("Co je tohle za ulici v západní Hrabůvce???", "images/krakovska.png", [
-    "krakovská", "krakovska"
-]);
-TO_BE_ITERATED.push(KRAKOVSKA);
-const SEDMNACTEHO_LISTOPADU_OSTRAVA = new Question("Co je tohle za ulici v Porubě, Pustkovci, a Martinově?", "images/17_listopadu_ostrava.png", [
-    "17.listopadu", "17. listopadu",
-    "sedmnacteho listopadu", "sedmnáctého listopadu",
-    "sedmnactého listopadu", "sedmnácteho listopadu"
-]);
-TO_BE_ITERATED.push(SEDMNACTEHO_LISTOPADU_OSTRAVA);
-const BEDRICHA_NIKODEMA = new Question("Co je tohle za ulici v Porubě a Pustkovci?", "images/bedricha_nikodema.png", [
-    "bedřicha nikodéma", "bedřicha nikodema", "bedricha nikodéma",
-    "bedricha nikodema"
-]);
-TO_BE_ITERATED.push(BEDRICHA_NIKODEMA);
-const MARTINOVSKA = new Question("Co je tohle za ulici v Porubě, Třebovicích, Pustkovci, a Martinově?", "images/martinovska.png", [
-    "martinovská", "martinovska"
-]);
-TO_BE_ITERATED.push(MARTINOVSKA);
-const EDEN = new Question("Co je tohle za mikro ulici v Rychvaldě?", "images/eden.png", [
-    "eden"
-]);
-TO_BE_ITERATED.push(EDEN);
-const MODRINOVA = new Question("Co je tohle za ulici v Lutyni?", "images/modrinova.png", [
-    "modřinová", "modrinova", "modřinova", "modrinová"
-]);
-TO_BE_ITERATED.push(MODRINOVA);
-const JIZNI = new Question("Co je tohle za ulici v Lutyni??", "images/jizni.png", [
-    "jížní", "jízní", "jizni", "jižní", "jižni", "jizní", "jízní", "jížni"
-]);
-TO_BE_ITERATED.push(JIZNI);
-const ZELENA = new Question("Co je tohle za ulici v Lutyni???", "images/zelena.png", [
-    "zelená", "zelena"
-]);
-TO_BE_ITERATED.push(ZELENA);
-const NA_KOPECKU = new Question("Co je tohle za ulici v Lutyni????", "images/na_kopecku.png", [
-    "na kopečku", "na kopecku"
-]);
-TO_BE_ITERATED.push(NA_KOPECKU);
-const BOZDECHOVA = new Question("Co je tohle za mikro ulici v Moravské Ostravě?", "images/bozdechova.png", [
-    "bozděchova", "bozdechova"
-]);
-TO_BE_ITERATED.push(BOZDECHOVA);
-const ADAMUSOVA_ORLOVA = new Question("Co je tohle za ulici na 5. etapě v Lutyni?", "images/adamusova_orlova.png", [
-    "adamusova"
-]);
-TO_BE_ITERATED.push(ADAMUSOVA_ORLOVA);
-const ADAMUSOVA_OSTRAVA = new Question("Co je tohle za ulici ve střední Hrabůvce?", "images/adamusova_ostrava.png", [
-    "adamusova"
-]);
-TO_BE_ITERATED.push(ADAMUSOVA_OSTRAVA);
-const MIROVA = new Question("Co je tohle za ulici v Orlové?", "images/mirova.png", [
-    "mírová", "mirova", "mírova", "mirová"
-]);
-TO_BE_ITERATED.push(MIROVA);
-const DOUBRAVSKA = new Question("Co je tohle za ulici v Orlové?", "images/doubravska.png", [
-    "doubravská", "doubravska"
-]);
-TO_BE_ITERATED.push(DOUBRAVSKA);
-const NA_STRANI = new Question("Co je tohle za ulici v Orlové?", "images/na_strani.png", [
-    "na stráni", "na strani"
-]);
-TO_BE_ITERATED.push(NA_STRANI);
-const U_VODOJEMU = new Question("Co je tohle za ulici v Orlové?", "images/u_vodojemu.png", [
-    "u vodojemu"
-]);
-TO_BE_ITERATED.push(U_VODOJEMU);
-const K_ZIMOVUDCE = new Question("Co je tohle za ulici v Orlové?", "images/k_zimovudce.png", [
-    "k zimovudce", "k zimovůdce"
-]);
-TO_BE_ITERATED.push(K_ZIMOVUDCE);
-const KRATKA = new Question("Co je tohle za ulici na 5. etapě?", "images/kratka.png", [
-    "krátká", "krátka", "kratká", "kratka"
-]);
-TO_BE_ITERATED.push(KRATKA);
-const ELDORADO = new Question("Co je tohle za ulici v Rychvaldě?", "images/eldorado.png", [
-    "eldorádo", "eldorado"
-]);
-TO_BE_ITERATED.push(ELDORADO);
-const U_DZUNGLE = new Question("Co je tohle za uličku v Rychvaldě?", "images/u_dzungle.png", [
-    "u džungle", "u dzungle", "u jungle"
-]);
-TO_BE_ITERATED.push(U_DZUNGLE);
-preloadImages();
+TO_BE_ITERATED.push(KOSTELNI);
 const maxScore = TO_BE_ITERATED.length;
 console.log(TO_BE_ITERATED);
 console.log("Max score constant: " + maxScore);
 const ITERATED = [];
 //***********************************************************/
-const VERSION_1_0 = `Verze 1.0 "Release" - sobota 24.10.2026
-    - vývoj začal pondělí 19.10.2026
-    - 63 ulic - ve všech jsem byl anebo je znám
-    - Grafické schémata trikolóra, triumvirát, světlo, temno
-    - Prostor na chyby = jiné platné zápisy a malé gramatické chyby se počítají
-`;
-const VERSION_1_1 = `Verze 1.1 "Hotfix" - neděle 25.10.2026
-    - vývoj začal a skončil 25.10.2026
-    - oprava obrázkové latence:
-        - ve verzi 1.0 se obrázky načetly v moment co byly potřeba, což způsobilo drtivou latenci
-        - nyní se obrázky načtou hned co se otevře stránka
-    - přidal jsem html head title "Azurulice (Azurové Ulice)" (v Releasu jsem to zapomněl změnit)
-`;
-const VERSION_1_2 = `Verze 1.2 "Tweak" - pondělí 26.10.2026
-    - vývoj začal 25.10.2026 a skončil 26.10.2026
-    - Změnil jsem otázku o Edenu z "Co je tohle za ulici v Rychvaldě?" na "Co je tohle za mikro ulici v Rychvaldě?"
-    - Přidal jsem 3 nové ulice, které zas tak moc dobře neznám, ale teď si je určitě budu stopro pamatovat:
-        1. Krátká (Orlová-Lutyně)
-        2. Eldorádo (Rychvald)
-        3. U Džungle (Rychvald)
-`;
-const VERSION_1_3 = `Verze 1.3 "Minor" - středa 28.10.2026 svátek
-    - vývoj začal a skončil 28.10.2026
-    - Přidal jsem tuto hru na itch.io (https://lutynius.itch.io/azurulice):
-        - v minulých verzí neměl html body a end-results dané pozadí, a tak se v itch.io načetly černě, což způsobilo, že nešlo text přečíst
-        - přidal jsem html body a end-results bílé pozadí
-    - Spravil jsem stackování schémat:
-        - v minulých verzí jste mohli např. nastavit světlé a černé schéma a to způsobilo že text měl stejnou barvu jako pozadí a nešlo text přečíst
-        - nyní nemůžete stackovat barevná schémata
-`;
-const LOG = VERSION_1_3 + "\n" +
-    VERSION_1_2 + "\n" +
-    VERSION_1_1 + "\n"
-    + VERSION_1_0;
+const BUNCH_OF_DASHES = "-------------------------------------------------------------------------------------------------------";
+const VERSION_1_0 = BUNCH_OF_DASHES + `
+Verze 1.0 "Release" - čtvrtek 29.10.2026
+    - vývoj začal pondělí 26.10.2026
+    - 21 náměstí, ve všech jsem byl anebo je znám ((až na pár výjimek mrk ;) mrk ;)
+    - 4 barevná schémata:
+        - trikolóra, triumvirát, světelno, temno
+` + BUNCH_OF_DASHES;
+const LOG = VERSION_1_0;
 UPDATELOG_TEXT.textContent = LOG;
+preloadImages();
 export {};
