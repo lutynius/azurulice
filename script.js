@@ -11,6 +11,7 @@ const CHANGE_TO_TRICOLOR_BUTTON = document.querySelector("#change-to-tricolor-bu
 const CHANGE_TO_TRIUMVIRATE_BUTTON = document.querySelector("#change-to-triumvirate-button");
 const CHANGE_TO_LIGHT_BUTTON = document.querySelector("#change-to-light-button");
 const CHANGE_TO_DARK_BUTTON = document.querySelector("#change-to-dark-button");
+const CHANGE_TO_BLUD_BUTTON = document.querySelector("#change-to-blud-button");
 const CHANGELOG = document.querySelector(".changelog");
 const GO_TO_MAIN_MENU_BUTTON = document.querySelector(".go-to-menu-button");
 const UPDATELOG_TEXT = document.querySelector(".updatelog-text");
@@ -38,6 +39,7 @@ CHANGE_TO_TRICOLOR_BUTTON.addEventListener("click", setColorSchemeToTricolor);
 CHANGE_TO_TRIUMVIRATE_BUTTON.addEventListener("click", setColorSchemeToTriumvirate);
 CHANGE_TO_LIGHT_BUTTON.addEventListener("click", setColorSchemeToLight);
 CHANGE_TO_DARK_BUTTON.addEventListener("click", setColorSchemeToDark);
+CHANGE_TO_BLUD_BUTTON.addEventListener("click", setColorSchemeToBlud);
 SUBMIT_BUTTON.addEventListener("click", submitAnswer);
 function startGame() {
     MAIN_MENU.style.display = "none";
@@ -100,6 +102,18 @@ function setColorSchemeToDark() {
         HEADER.style.backgroundColor = "black";
         MAIN.style.backgroundColor = "dimgray";
         FOOTER.style.backgroundColor = "gray";
+    }
+    else {
+        console.log("ERROR: Question's header, main, footer, and text apparently do not exist.");
+    }
+}
+function setColorSchemeToBlud() {
+    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
+        TEXT.style.color = "black";
+        COPYRIGHT_HEADER.style.color = "black";
+        HEADER.style.backgroundColor = "cornflowerblue";
+        MAIN.style.backgroundColor = "dodgerblue";
+        FOOTER.style.backgroundColor = "royalblue";
     }
     else {
         console.log("ERROR: Question's header, main, footer, and text apparently do not exist.");
@@ -508,6 +522,31 @@ const KRMELINSKA = new Question("Co je tohle za ulici ve velké Ostravě?", "ima
     "krmelínská", "krmelinska", "krmelínska", "krmelinská"
 ]);
 TO_BE_ITERATED.push(KRMELINSKA);
+// ulice z 3.11.2026
+// streets from no nut november 3 2026
+// I
+// V
+const SUCHARDOVA = new Question("Co je tohle za ulicu v Moravské Ostravě?", "images/suchardova.png", [
+    "suchardova"
+]);
+TO_BE_ITERATED.push(SUCHARDOVA);
+const MANESOVA = new Question("Ulice v Hoglinově (Moravská Ostrava)?", "images/manesova.png", [
+    "mánesova", "manesova"
+]);
+TO_BE_ITERATED.push(MANESOVA);
+const MYSLBEKOVA = new Question("Ulička v Moravské Ostravě?", "images/myslbekova.png", [
+    "myslbekova"
+]);
+TO_BE_ITERATED.push(MYSLBEKOVA);
+const SKRETOVA = new Question("Ulica v Moravské Ostravě?", "images/skretova.png", [
+    "škrétova", "škretova", "skrétova", "skretova"
+]);
+TO_BE_ITERATED.push(SKRETOVA);
+const VITEZNA = new Question("Ulice unavenosti v Moravské Ostravě?", "images/vitezna.png", [
+    "vítězná", "vítězna", "vítezna", "vitézná", "vítezná",
+    "vitězna", "vitězná"
+]);
+TO_BE_ITERATED.push(VITEZNA);
 preloadImages();
 const maxScore = TO_BE_ITERATED.length;
 console.log(TO_BE_ITERATED);
