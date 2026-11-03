@@ -585,7 +585,8 @@ Verze 1.3 "Minor" - středa 28.10.2026 svátek
     - Spravil jsem stackování schémat:
         - v minulých verzí jste mohli např. nastavit světlé a černé schéma a to způsobilo že text měl stejnou barvu jako pozadí a nešlo text přečíst
         - nyní nemůžete stackovat barevná schémata`;
-const VERSION_1_4 = `Verze 1.4 "Four" - čtvrtek 29.10.2026
+const VERSION_1_4 = BUNCH_OF_DASHES + `
+Verze 1.4 "Four" - čtvrtek 29.10.2026
     - vývoj začal pouze v tento čtvrtek
     - Přidal jsem 4 nové ulice:
         1. Krmelínská v Ostravě
@@ -594,7 +595,23 @@ const VERSION_1_4 = `Verze 1.4 "Four" - čtvrtek 29.10.2026
         4. Zahradní v Orlové
     - Vydesignoval jsem tento update log
         - nyní jsou mezi popisy verzí přidané čárky '----', aby to tu bylo čitelnější`;
-const LOG = VERSION_1_4 + "\n" +
+const VERSION_1_5 = `Verze 1.5 "Blood Five" - úterý 3.11.2026
+    - vývoj začal pouze v toto úterý
+    - Přidal jsem nové barevné schéma "Blud"
+        - obsahuje tři barvy:
+            1. Cornflower blue
+            2. Dodger blue
+            3. Royal blue
+        - jsou to HTML/CSS barvy btw
+    - Přidal jsem 5 nových ulic:
+        1. Suchardova v Ostravě
+        2. Mánesova taky v Ostravě
+        3. Myslbekova v le Ostravě
+        4. Škrétova v Leostravě
+        5. Vítězná ve Stravě
+    - :)`;
+const LOG = VERSION_1_5 + "\n" +
+    VERSION_1_4 + "\n" +
     VERSION_1_3 + "\n" +
     VERSION_1_2 + "\n" +
     VERSION_1_1 + "\n"
