@@ -652,8 +652,8 @@ Verze 1.5 "Blood Five" - úterý 3.11.2026
     - :)
 `;
 const VERSION_1_6 = `
-Verze 1.6 "Amen In Here" - pátek 6.11.2026
-    - vývoj jen dneska ve škole a doma
+Verze 1.6 "Amen In Here" - sobota 7.11.2026
+    - vývoj 6.11. ve škole a doma a 7.11. doma
     - název updatu jelikož poslouchám anti-nightcore gospel of dismay od dagames
     - Přidal jsem o2(pět) ulice:
         1. Karla Dvořáčka - 5. etapa v Lutyni
