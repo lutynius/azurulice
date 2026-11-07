@@ -158,9 +158,15 @@ function displayQuestion(question: Question): void {
         if (!question.imagePath){
             TEXT.textContent = "ERROR: Could not load the image. The current question's imagepath is probably null or undefined.";
         } else {
-            if (question.imagePath == "images/adamusova_orlova.png" || question.imagePath == "images/na_olmovci.png" || question.imagePath == "images/f_s_tumy.png" || question.imagePath == "images/kratka.png"){
+            if (question.imagePath == "images/na_olmovci.png" || question.imagePath == "images/f_s_tumy.png" || question.imagePath == "images/kratka.png"){
                 DISPATCHER16.style.display = "inline";
-            } else {
+                DISPATCHER16.style.filter = "grayscale(100%)";
+            } 
+            else if (question.imagePath == "images/karla_dvoracka.png" || question.imagePath == "images/detmarovicka.png" || question.imagePath == "images/adamusova_orlova.png"){
+                DISPATCHER16.style.display = "inline";
+                DISPATCHER16.style.filter = "grayscale(0%)";
+            }
+            else {
                 DISPATCHER16.style.display = "none";
             }
             IMAGE.src = question.imagePath;
@@ -784,6 +790,47 @@ const VITEZNA = new Question("Ulice unavenosti v Moravské Ostravě?",
 );
 TO_BE_ITERATED.push(VITEZNA);
 
+// ulice zo 6.11.2026 pátek
+// I
+// V
+
+const KARLA_DVORACKA = new Question("Ulice v Orlové?",
+    "images/karla_dvoracka.png", [
+        "kd", "k d", "k.d", "kd.", "k d.", "k. d", "k.d.", "k. d.", "karld", "karl d", "karl.d", "karlad", "karld.", "kdvor.", "kdvoř.", "k dvor.", "k dvoř.", "k.dvor.", "k.dvoř.", "karl d.", "karl. d", "karl.d.", "karla d", "karlad.", "k. dvor.", "k. dvoř.", "karl. d.", "karla d.", "kdvoráč.", "kdvořáč.", "k dvoráč.", "k dvořáč.", "k.dvoráč.", "k.dvořáč.", "karldvor.", "karldvoř.", "kdvoracka", "kdvoráčka", "kdvořacka", "kdvořáčka", "k dvoracka", "k dvoráčka", "k dvořacka", "k dvořáčka", "k. dvoráč.", "k. dvořáč.", "k.dvoracka", "k.dvoráčka", "k.dvořacka", "k.dvořáčka", "karl dvor.", "karl dvoř.", "karl.dvor.", "karl.dvoř.", "karladvor.", "karladvoř.", "k. dvoracka", "k. dvoráčka", "k. dvořacka", "k. dvořáčka", "karl. dvor.", "karl. dvoř.", "karla dvor.", "karla dvoř.", "karldvoráč.", "karldvořáč.", "karl dvoráč.", "karl dvořáč.", "karl.dvoráč.", "karl.dvořáč.", "karladvoráč.", "karladvořáč.", "karldvoracka", "karldvoráčka", "karldvořacka", "karldvořáčka", "karl dvoracka", "karl dvoráčka", "karl dvořacka", "karl dvořáčka", "karl. dvoráč.", "karl. dvořáč.", "karl.dvoracka", "karl.dvoráčka", "karl.dvořacka", "karl.dvořáčka", "karla dvoráč.", "karla dvořáč.", "karladvoracka", "karladvoráčka", "karladvořacka", "karladvořáčka", "karl. dvoracka", "karl. dvoráčka", "karl. dvořacka", "karl. dvořáčka", "karla dvoracka", "karla dvoráčka", "karla dvořacka", "karla dvořáčka", "karla. dvoracka", "karla. dvořáčka"
+    ]
+);
+TO_BE_ITERATED.push(KARLA_DVORACKA);
+
+const DETMAROVICKA = new Question("Ulica v Orlové?",
+    "images/detmarovicka.png", [
+        "dětmarovická", "dětmarovicka", "detmarovická", "detmarovicka"
+    ]
+);
+TO_BE_ITERATED.push(DETMAROVICKA);
+
+const SVORNOSTI = new Question("Ulice v Ostrava-Zábřehu?",
+    "images/svornosti.png", [
+        "svornosti"
+    ]
+);
+TO_BE_ITERATED.push(SVORNOSTI);
+
+const CUJKOVOVA = new Question("Ulica v Ostrava-Zábřehu?",
+    "images/cujkovova.png", [
+        "čujkovova", "cujkovova"
+    ]
+);
+TO_BE_ITERATED.push(CUJKOVOVA);
+
+const SVAZACKA = new Question("Co je tohle za ulicu v Ostrava-Zábřehu?",
+    "images/svazacka.png", [
+        "svazácká", "svazácka", "svazacká", "svazacka"
+    ]
+);
+TO_BE_ITERATED.push(SVAZACKA);
+
+//----------------------------------------------
+
 preloadImages();
 
 const maxScore: number = TO_BE_ITERATED.length;
@@ -798,6 +845,7 @@ const ITERATED: Array<Question> = [];
 const BUNCH_OF_DASHES: string = "-------------------------------------------------------------------------------------------------------";
 
 const VERSION_1_0: string = BUNCH_OF_DASHES + `
+
 Verze 1.0 "Release" - sobota 24.10.2026
     - vývoj začal pondělí 19.10.2026
     - 63 ulic - ve všech jsem byl anebo je znám
@@ -806,23 +854,28 @@ Verze 1.0 "Release" - sobota 24.10.2026
 ` + BUNCH_OF_DASHES;
 
 const VERSION_1_1: string = BUNCH_OF_DASHES + `
+
 Verze 1.1 "Hotfix" - neděle 25.10.2026
     - vývoj začal a skončil 25.10.2026
     - oprava obrázkové latence:
         - ve verzi 1.0 se obrázky načetly v moment co byly potřeba, což způsobilo drtivou latenci
         - nyní se obrázky načtou hned co se otevře stránka
-    - přidal jsem html head title "Azurulice (Azurové Ulice)" (v Releasu jsem to zapomněl změnit)`;
+    - přidal jsem html head title "Azurulice (Azurové Ulice)" (v Releasu jsem to zapomněl změnit)
+`;
 
 const VERSION_1_2: string = BUNCH_OF_DASHES + `
+
 Verze 1.2 "Tweak" - pondělí 26.10.2026
     - vývoj začal 25.10.2026 a skončil 26.10.2026
     - Změnil jsem otázku o Edenu z "Co je tohle za ulici v Rychvaldě?" na "Co je tohle za mikro ulici v Rychvaldě?"
     - Přidal jsem 3 nové ulice, které zas tak moc dobře neznám, ale teď si je určitě budu stopro pamatovat:
         1. Krátká (Orlová-Lutyně)
         2. Eldorádo (Rychvald)
-        3. U Džungle (Rychvald)`;
+        3. U Džungle (Rychvald)
+`;
 
 const VERSION_1_3: string = BUNCH_OF_DASHES + `
+
 Verze 1.3 "Minor" - středa 28.10.2026 svátek
     - vývoj začal a skončil 28.10.2026
     - Přidal jsem tuto hru na itch.io (https://lutynius.itch.io/azurulice):
@@ -830,9 +883,11 @@ Verze 1.3 "Minor" - středa 28.10.2026 svátek
         - přidal jsem html body a end-results bílé pozadí
     - Spravil jsem stackování schémat:
         - v minulých verzí jste mohli např. nastavit světlé a černé schéma a to způsobilo že text měl stejnou barvu jako pozadí a nešlo text přečíst
-        - nyní nemůžete stackovat barevná schémata`;
+        - nyní nemůžete stackovat barevná schémata
+`;
 
 const VERSION_1_4: string = BUNCH_OF_DASHES + `
+
 Verze 1.4 "Four" - čtvrtek 29.10.2026
     - vývoj začal pouze v tento čtvrtek
     - Přidal jsem 4 nové ulice:
@@ -841,9 +896,12 @@ Verze 1.4 "Four" - čtvrtek 29.10.2026
         3. Ostravská v Petřvaldě
         4. Zahradní v Orlové
     - Vydesignoval jsem tento update log
-        - nyní jsou mezi popisy verzí přidané čárky '----', aby to tu bylo čitelnější`;
+        - nyní jsou mezi popisy verzí přidané čárky '----', aby to tu bylo čitelnější
+`;
 
-const VERSION_1_5: string = `Verze 1.5 "Blood Five" - úterý 3.11.2026
+const VERSION_1_5: string = BUNCH_OF_DASHES + `
+
+Verze 1.5 "Blood Five" - úterý 3.11.2026
     - vývoj začal pouze v toto úterý
     - Přidal jsem nové barevné schéma "Blud"
         - obsahuje tři barvy:
@@ -857,9 +915,32 @@ const VERSION_1_5: string = `Verze 1.5 "Blood Five" - úterý 3.11.2026
         3. Myslbekova v le Ostravě
         4. Škrétova v Leostravě
         5. Vítězná ve Stravě
-    - :)`
+    - :)
+`;
+
+const VERSION_1_6: string = `
+Verze 1.6 "Amen In Here" - pátek 6.11.2026
+    - vývoj jen dneska ve škole a doma
+    - název updatu jelikož poslouchám anti-nightcore gospel of dismay od dagames
+    - Přidal jsem o2(pět) ulice:
+        1. Karla Dvořáčka - 5. etapa v Lutyni
+        2. Dětmarovická - 5. etapa v Lutyni
+
+        3. Svornosti - Ostrava-Zábřeh
+        4. Čujkovova - Ostrava-Sábřeh
+        5. Svazácká - Ostrava-Yábřeh
+
+        - a tím pádem jsem i zatajil ty názvy v jiných obrázcích
+
+    - Čendžnul jsem čendžlog:
+        - Přidal jsem mezery mezi '----' a samotným textem, aby to bylo čitelnější
+
+    "can i get an amen in here? you see the magic of art, it would tear you apart if you knew!"
+    "he had bigger plans for the band, by demand we came back to this darkened cell"
+`;
 
 const LOG: string =
+    VERSION_1_6 + "\n" +
     VERSION_1_5 + "\n" +
     VERSION_1_4 + "\n" +
     VERSION_1_3 + "\n" +
