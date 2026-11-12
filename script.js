@@ -2,6 +2,8 @@ let score = 0;
 let currentQuestion;
 let currentQuestionOrdinal = 0;
 const MAIN_MENU = document.querySelector(".main-menu");
+const MAIN_MENU_TITLE = document.querySelector(".main-menu-title");
+const MAIN_MENU_SUBTITLE = document.querySelector(".main-menu-subtitle");
 const START_BUTTON = document.querySelector(".start-button");
 const CHANGE_COLORSCHEME_BUTTON = document.querySelector(".change-colorscheme-button");
 const CHANGELOG_BUTTON = document.querySelector(".changelog-button");
@@ -60,7 +62,11 @@ function goBackToStartMenu() {
     MAIN_MENU.style.display = "flex";
 }
 function setColorSchemeToTricolor() {
-    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
+    if (MAIN_MENU && MAIN_MENU_SUBTITLE && MAIN_MENU_TITLE &&
+        HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
+        MAIN_MENU.style.backgroundColor = "white";
+        MAIN_MENU_TITLE.style.color = "black";
+        MAIN_MENU_SUBTITLE.style.color = "black";
         TEXT.style.color = "black";
         COPYRIGHT_HEADER.style.color = "black";
         HEADER.style.backgroundColor = "red";
@@ -72,7 +78,11 @@ function setColorSchemeToTricolor() {
     }
 }
 function setColorSchemeToTriumvirate() {
-    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
+    if (MAIN_MENU && MAIN_MENU_TITLE && MAIN_MENU_SUBTITLE &&
+        HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
+        MAIN_MENU.style.backgroundColor = "antiquewhite";
+        MAIN_MENU_TITLE.style.color = "black";
+        MAIN_MENU_SUBTITLE.style.color = "black";
         TEXT.style.color = "black";
         COPYRIGHT_HEADER.style.color = "black";
         HEADER.style.backgroundColor = "antiquewhite";
@@ -84,7 +94,11 @@ function setColorSchemeToTriumvirate() {
     }
 }
 function setColorSchemeToLight() {
-    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
+    if (MAIN_MENU && MAIN_MENU_TITLE && MAIN_MENU_SUBTITLE &&
+        HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
+        MAIN_MENU.style.backgroundColor = "white";
+        MAIN_MENU_TITLE.style.color = "black";
+        MAIN_MENU_SUBTITLE.style.color = "black";
         TEXT.style.color = "black";
         COPYRIGHT_HEADER.style.color = "black";
         HEADER.style.backgroundColor = "whitesmoke";
@@ -96,7 +110,11 @@ function setColorSchemeToLight() {
     }
 }
 function setColorSchemeToDark() {
-    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
+    if (MAIN_MENU && MAIN_MENU_TITLE && MAIN_MENU_SUBTITLE &&
+        HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
+        MAIN_MENU.style.backgroundColor = "black";
+        MAIN_MENU_TITLE.style.color = "white";
+        MAIN_MENU_SUBTITLE.style.color = "white";
         TEXT.style.color = "white";
         COPYRIGHT_HEADER.style.color = "white";
         HEADER.style.backgroundColor = "black";
@@ -108,7 +126,11 @@ function setColorSchemeToDark() {
     }
 }
 function setColorSchemeToBlud() {
-    if (HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
+    if (MAIN_MENU && MAIN_MENU_TITLE && MAIN_MENU_SUBTITLE &&
+        HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER) {
+        MAIN_MENU.style.backgroundColor = "cornflowerblue";
+        MAIN_MENU_TITLE.style.color = "black";
+        MAIN_MENU_SUBTITLE.style.color = "black";
         TEXT.style.color = "black";
         COPYRIGHT_HEADER.style.color = "black";
         HEADER.style.backgroundColor = "cornflowerblue";
@@ -575,6 +597,17 @@ const SVAZACKA = new Question("Co je tohle za ulicu v Ostrava-Zábřehu?", "imag
     "svazácká", "svazácka", "svazacká", "svazacka"
 ]);
 TO_BE_ITERATED.push(SVAZACKA);
+// ulicie z neděle 8.11.2026
+// I
+// V
+const TRICATEHO_DUBNA = new Question("Ulice u dolu Jindřich, Moravská Ostrava", "images/30_dubna.png", [
+    "30d", "30 d", "30.d", "30d.", "30 .d", "30 d.", "30. d", "30.d.", "30 . d", "30 .d.", "30.  d", "30. .d", "30. d.", "30dub.", "30 . d.", "30 dub.", "30.  d.", "30. . d", "30. .d.", "30.dub.", "30dubna", "30 .dub.", "30 dubna", "30. . d.", "30. dub.", "30.dubna", "30 . dub.", "30 .dubna", "30.  dub.", "30. .dub.", "30. dubna", "30 . dubna", "30.  dubna", "30. . dub.", "30. .dubna", "30.. dubna", "30ho dubna", "30. . dubna", "30.ho dubna", "tricatého dubna", "třicátého dubna"
+]);
+TO_BE_ITERATED.push(TRICATEHO_DUBNA);
+const PODZAMCI = new Question("Ulice u dolu Zárubek, Slezská Ostrava", "images/podzamci.png", [
+    "podzámčí", "podzamci", "podzámči", "podzamčí"
+]);
+TO_BE_ITERATED.push(PODZAMCI);
 //----------------------------------------------
 preloadImages();
 const maxScore = TO_BE_ITERATED.length;
@@ -638,6 +671,7 @@ const VERSION_1_5 = BUNCH_OF_DASHES + `
 Verze 1.5 "Blood Five" - úterý 3.11.2026
     - vývoj začal pouze v toto úterý
     - Přidal jsem nové barevné schéma "Blud"
+        - původně je z Namestys 1.2
         - obsahuje tři barvy:
             1. Cornflower blue
             2. Dodger blue
@@ -651,7 +685,8 @@ Verze 1.5 "Blood Five" - úterý 3.11.2026
         5. Vítězná ve Stravě
     - :)
 `;
-const VERSION_1_6 = `
+const VERSION_1_6 = BUNCH_OF_DASHES + `
+
 Verze 1.6 "Amen In Here" - sobota 7.11.2026
     - vývoj 6.11. ve škole a doma a 7.11. doma
     - název updatu jelikož poslouchám anti-nightcore gospel of dismay od dagames
@@ -671,7 +706,21 @@ Verze 1.6 "Amen In Here" - sobota 7.11.2026
     "can i get an amen in here? you see the magic of art, it would tear you apart if you knew!"
     "he had bigger plans for the band, by demand we came back to this darkened cell"
 `;
-const LOG = VERSION_1_6 + "\n" +
+const VERSION_1_7 = `
+Verze 1.7 "Question Mark" - ???????
+    - Název verze, jelikož jsem tam měl "???" jako placeholder
+    - Přidal jsem 2 ostravské ulice:
+        - 30.dubna (centrum)
+        - Podzámčí (důl zárubek)
+
+    - 4endžnul jsem čendžlog:
+        - u 1.5 jsem přidal odrážku "- původně je z Namestys 1.2", aby si někdo nemyslel, že Blud je původem vodcuť, Namestys si taky zaslouží lásku <3
+
+    - Rozšířil jsem barevná schémata na hlavní menu:
+        - v předchozích verzích platila schémata pouze na herní menu, nyní designují i hlavní menu
+`;
+const LOG = VERSION_1_7 + "\n" +
+    VERSION_1_6 + "\n" +
     VERSION_1_5 + "\n" +
     VERSION_1_4 + "\n" +
     VERSION_1_3 + "\n" +
