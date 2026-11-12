@@ -31,13 +31,13 @@ h1, h2 {
     border: 5px black solid;
 }
 
-.menu-title {
+.main-menu-title {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 3rem;
     margin: 1rem;
 }
 
-.menu-subtitle {
+.main-menu-subtitle {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2rem;
 }
