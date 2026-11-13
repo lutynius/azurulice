@@ -982,7 +982,7 @@ Verze 1.6 "Amen In Here" - sobota 7.11.2026
 `;
 
 const VERSION_1_7: string = `
-Verze 1.7 "Question Mark" - ???????
+Verze 1.7 "Question Mark" - pátek 13. (11.) 2026
     - Název verze, jelikož jsem tam měl "???" jako placeholder
     - Přidal jsem 2 ostravské ulice:
         - 30.dubna (centrum)
