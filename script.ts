@@ -2,37 +2,39 @@ let score: number = 0;
 let currentQuestion: Question;
 let currentQuestionOrdinal: number = 0;
 
-const MAIN_MENU = document.querySelector(".main-menu") as HTMLDivElement;
-const MAIN_MENU_TITLE = document.querySelector(".main-menu-title") as HTMLHeadingElement;
-const MAIN_MENU_SUBTITLE = document.querySelector(".main-menu-subtitle") as HTMLHeadingElement;
-const START_BUTTON = document.querySelector(".start-button") as HTMLButtonElement;
-const CHANGE_COLORSCHEME_BUTTON = document.querySelector(".change-colorscheme-button") as HTMLButtonElement;
-const CHANGELOG_BUTTON = document.querySelector(".changelog-button") as HTMLButtonElement;
-const COLORSCHEME_SETTINGS = document.querySelector(".colorscheme-settings") as HTMLDivElement;
-const GO_BACK_BUTTON = document.querySelector(".go-back-button") as HTMLButtonElement;
-const CHANGE_TO_TRICOLOR_BUTTON = document.querySelector("#change-to-tricolor-button") as HTMLButtonElement;
-const CHANGE_TO_TRIUMVIRATE_BUTTON = document.querySelector("#change-to-triumvirate-button") as HTMLButtonElement;
-const CHANGE_TO_LIGHT_BUTTON = document.querySelector("#change-to-light-button") as HTMLButtonElement;
-const CHANGE_TO_DARK_BUTTON = document.querySelector("#change-to-dark-button") as HTMLButtonElement;
-const CHANGE_TO_BLUD_BUTTON = document.querySelector("#change-to-blud-button") as HTMLButtonElement;
-const CHANGELOG = document.querySelector(".changelog") as HTMLDivElement;
-const GO_TO_MAIN_MENU_BUTTON = document.querySelector(".go-to-menu-button") as HTMLButtonElement;
-const UPDATELOG_TEXT = document.querySelector(".updatelog-text") as HTMLParagraphElement;
-const QUESTION = document.querySelector(".question") as HTMLDivElement;
-const HEADER = QUESTION.querySelector("header");
-const TEXT = document.querySelector(".text") as HTMLHeadingElement;
-const COPYRIGHT_HEADER = document.querySelector(".copyright_header") as HTMLParagraphElement;
-const MAIN = QUESTION.querySelector("main");
-const IMAGE = document.querySelector(".image") as HTMLImageElement;
-const FOOTER = QUESTION.querySelector("footer");
-const INPUT = document.querySelector(".input") as HTMLInputElement;
-const SUBMIT_BUTTON = document.querySelector(".submit-button") as HTMLButtonElement;
-const DISPATCHER16 = document.querySelector(".dispatcher16") as HTMLImageElement;
-const END_RESULTS = document.querySelector(".end-results") as HTMLDivElement;
-const RESULTEXT = document.querySelector("#result") as HTMLHeadingElement;
-const SCORE_ACQUIRED = document.querySelector("#score-acquired") as HTMLSpanElement;
-const SCORE_MAXIMUM = document.querySelector("#score-maximum") as HTMLSpanElement;
-const PERCENTAGE = document.querySelector("#percentage") as HTMLSpanElement;
+const MAIN_MENU = document.getElementById("main-menu") as HTMLDivElement;
+const MAIN_MENU_TITLE = document.getElementById("main-menu-title") as HTMLHeadingElement;
+const MAIN_MENU_SUBTITLE = document.getElementById("main-menu-subtitle") as HTMLHeadingElement;
+const START_BUTTON = document.getElementById("start-button") as HTMLButtonElement;
+const CHANGE_COLORSCHEME_BUTTON = document.getElementById("change-colorscheme-button") as HTMLButtonElement;
+const CHANGELOG_BUTTON = document.getElementById("changelog-button") as HTMLButtonElement;
+const COLORSCHEME_SETTINGS = document.getElementById("colorscheme-settings") as HTMLDivElement;
+const GO_BACK_BUTTON = document.getElementById("go-back-button") as HTMLButtonElement;
+const CHANGE_TO_TRICOLOR_BUTTON = document.getElementById("change-to-tricolor-button") as HTMLButtonElement;
+const CHANGE_TO_TRIUMVIRATE_BUTTON = document.getElementById("change-to-triumvirate-button") as HTMLButtonElement;
+const CHANGE_TO_LIGHT_BUTTON = document.getElementById("change-to-light-button") as HTMLButtonElement;
+const CHANGE_TO_DARK_BUTTON = document.getElementById("change-to-dark-button") as HTMLButtonElement;
+const CHANGE_TO_BLUD_BUTTON = document.getElementById("change-to-blud-button") as HTMLButtonElement;
+const CHANGELOG = document.getElementById("changelog") as HTMLDivElement;
+const GO_TO_MAIN_MENU_BUTTON = document.getElementById("go-to-menu-button") as HTMLButtonElement;
+const UPDATELOG_TEXT = document.getElementById("updatelog-text") as HTMLParagraphElement;
+const QUESTION = document.getElementById("question") as HTMLDivElement;
+const HEADER = document.getElementById("header") as HTMLDivElement;
+const TEXT = document.getElementById("text") as HTMLHeadingElement;
+const COPYRIGHT_HEADER = document.getElementById("copyright_header") as HTMLParagraphElement;
+const MAIN = document.getElementById("main") as HTMLDivElement;
+const IMAGE = document.getElementById("image") as HTMLImageElement;
+const FOOTER = document.getElementById("footer");
+const INPUT = document.getElementById("input") as HTMLInputElement;
+const SUBMIT_BUTTON = document.getElementById("submit-button") as HTMLButtonElement;
+const DISPATCHER16 = document.getElementById("dispatcher16") as HTMLImageElement;
+const END_RESULTS = document.getElementById("end-results") as HTMLDivElement;
+const RESULTEXT = document.getElementById("result") as HTMLHeadingElement;
+const SCORE_ACQUIRED = document.getElementById("score-acquired") as HTMLSpanElement;
+const SCORE_MAXIMUM = document.getElementById("score-maximum") as HTMLSpanElement;
+const PERCENTAGE = document.getElementById("percentage") as HTMLSpanElement;
+
+console.log(MAIN_MENU);
 
 START_BUTTON.addEventListener("click", startGame);
 CHANGE_COLORSCHEME_BUTTON.addEventListener("click", displayColorSchemeSettings);
@@ -701,12 +703,12 @@ const NA_STRANI = new Question("Co je tohle za ulici v Orlové?",
 );
 TO_BE_ITERATED.push(NA_STRANI);
 
-const U_VODOJEMU = new Question("Co je tohle za ulici v Orlové?",
-    "images/u_vodojemu.png", [
+const U_VODOJEMU_ORLOVA = new Question("Co je tohle za ulici v Orlové?",
+    "images/u_vodojemu_orlova.png", [
         "u vodojemu"
     ]
 );
-TO_BE_ITERATED.push(U_VODOJEMU);
+TO_BE_ITERATED.push(U_VODOJEMU_ORLOVA);
 
 const K_ZIMOVUDCE = new Question("Co je tohle za ulici v Orlové?",
     "images/k_zimovudce.png", [
@@ -869,6 +871,27 @@ const PODZAMCI = new Question("Ulice u dolu Zárubek, Slezská Ostrava",
 );
 TO_BE_ITERATED.push(PODZAMCI);
 
+// 17. listopadu 2026 haha
+console.log(SEDMNACTEHO_LISTOPADU_ORLOVA)
+console.log(SEDMNACTEHO_LISTOPADU_OSTRAVA)
+// I
+// V
+
+const U_VODOJEMU_OSTRAVA = new Question("Co je tohle za uliceju v Ostravě?",
+    "images/u_vodojemu_ostrava.png", [
+        "u vodojmemu", "u vodojemu"
+    ]
+);
+TO_BE_ITERATED.push(U_VODOJEMU_OSTRAVA);
+
+const V_ZATISI = new Question("Co je tohle za uliceju v Mariánských Horách?",
+    "images/v_zatisi.png", [
+        "v zátiší", "v zatisi", "v zátiši", "v zátisí", "v zátisi",
+        "v zatiší", "v zatiši", "v zátisí"
+    ]
+);
+TO_BE_ITERATED.push(V_ZATISI);
+
 //----------------------------------------------
 
 preloadImages();
@@ -981,7 +1004,8 @@ Verze 1.6 "Amen In Here" - sobota 7.11.2026
     "he had bigger plans for the band, by demand we came back to this darkened cell"
 `;
 
-const VERSION_1_7: string = `
+const VERSION_1_7: string = BUNCH_OF_DASHES + `
+
 Verze 1.7 "Question Mark" - pátek 13. (11.) 2026
     - Název verze, jelikož jsem tam měl "???" jako placeholder
     - Přidal jsem 2 ostravské ulice:
@@ -995,7 +1019,18 @@ Verze 1.7 "Question Mark" - pátek 13. (11.) 2026
         - v předchozích verzích platila schémata pouze na herní menu, nyní designují i hlavní menu
 `;    
 
+const VERSION_1_8: string = `
+Verze 1.8 "Epiphany" - čtvrtek 19.11.2026
+    - Novinky:
+        - Přidal jsem 2 nové ulice
+            - V zátiší
+            - U vodojemu
+    - Změny:
+        - v předchozích verzích jsem používal document.querySelector a html classy, nyní od teď používám html idečka a document.getElementById
+`;
+
 const LOG: string =
+    VERSION_1_8 + "\n" + 
     VERSION_1_7 + "\n" + 
     VERSION_1_6 + "\n" +
     VERSION_1_5 + "\n" +

@@ -1,37 +1,38 @@
 let score = 0;
 let currentQuestion;
 let currentQuestionOrdinal = 0;
-const MAIN_MENU = document.querySelector(".main-menu");
-const MAIN_MENU_TITLE = document.querySelector(".main-menu-title");
-const MAIN_MENU_SUBTITLE = document.querySelector(".main-menu-subtitle");
-const START_BUTTON = document.querySelector(".start-button");
-const CHANGE_COLORSCHEME_BUTTON = document.querySelector(".change-colorscheme-button");
-const CHANGELOG_BUTTON = document.querySelector(".changelog-button");
-const COLORSCHEME_SETTINGS = document.querySelector(".colorscheme-settings");
-const GO_BACK_BUTTON = document.querySelector(".go-back-button");
-const CHANGE_TO_TRICOLOR_BUTTON = document.querySelector("#change-to-tricolor-button");
-const CHANGE_TO_TRIUMVIRATE_BUTTON = document.querySelector("#change-to-triumvirate-button");
-const CHANGE_TO_LIGHT_BUTTON = document.querySelector("#change-to-light-button");
-const CHANGE_TO_DARK_BUTTON = document.querySelector("#change-to-dark-button");
-const CHANGE_TO_BLUD_BUTTON = document.querySelector("#change-to-blud-button");
-const CHANGELOG = document.querySelector(".changelog");
-const GO_TO_MAIN_MENU_BUTTON = document.querySelector(".go-to-menu-button");
-const UPDATELOG_TEXT = document.querySelector(".updatelog-text");
-const QUESTION = document.querySelector(".question");
-const HEADER = QUESTION.querySelector("header");
-const TEXT = document.querySelector(".text");
-const COPYRIGHT_HEADER = document.querySelector(".copyright_header");
-const MAIN = QUESTION.querySelector("main");
-const IMAGE = document.querySelector(".image");
-const FOOTER = QUESTION.querySelector("footer");
-const INPUT = document.querySelector(".input");
-const SUBMIT_BUTTON = document.querySelector(".submit-button");
-const DISPATCHER16 = document.querySelector(".dispatcher16");
-const END_RESULTS = document.querySelector(".end-results");
-const RESULTEXT = document.querySelector("#result");
-const SCORE_ACQUIRED = document.querySelector("#score-acquired");
-const SCORE_MAXIMUM = document.querySelector("#score-maximum");
-const PERCENTAGE = document.querySelector("#percentage");
+const MAIN_MENU = document.getElementById("main-menu");
+const MAIN_MENU_TITLE = document.getElementById("main-menu-title");
+const MAIN_MENU_SUBTITLE = document.getElementById("main-menu-subtitle");
+const START_BUTTON = document.getElementById("start-button");
+const CHANGE_COLORSCHEME_BUTTON = document.getElementById("change-colorscheme-button");
+const CHANGELOG_BUTTON = document.getElementById("changelog-button");
+const COLORSCHEME_SETTINGS = document.getElementById("colorscheme-settings");
+const GO_BACK_BUTTON = document.getElementById("go-back-button");
+const CHANGE_TO_TRICOLOR_BUTTON = document.getElementById("change-to-tricolor-button");
+const CHANGE_TO_TRIUMVIRATE_BUTTON = document.getElementById("change-to-triumvirate-button");
+const CHANGE_TO_LIGHT_BUTTON = document.getElementById("change-to-light-button");
+const CHANGE_TO_DARK_BUTTON = document.getElementById("change-to-dark-button");
+const CHANGE_TO_BLUD_BUTTON = document.getElementById("change-to-blud-button");
+const CHANGELOG = document.getElementById("changelog");
+const GO_TO_MAIN_MENU_BUTTON = document.getElementById("go-to-menu-button");
+const UPDATELOG_TEXT = document.getElementById("updatelog-text");
+const QUESTION = document.getElementById("question");
+const HEADER = document.getElementById("header");
+const TEXT = document.getElementById("text");
+const COPYRIGHT_HEADER = document.getElementById("copyright_header");
+const MAIN = document.getElementById("main");
+const IMAGE = document.getElementById("image");
+const FOOTER = document.getElementById("footer");
+const INPUT = document.getElementById("input");
+const SUBMIT_BUTTON = document.getElementById("submit-button");
+const DISPATCHER16 = document.getElementById("dispatcher16");
+const END_RESULTS = document.getElementById("end-results");
+const RESULTEXT = document.getElementById("result");
+const SCORE_ACQUIRED = document.getElementById("score-acquired");
+const SCORE_MAXIMUM = document.getElementById("score-maximum");
+const PERCENTAGE = document.getElementById("percentage");
+console.log(MAIN_MENU);
 START_BUTTON.addEventListener("click", startGame);
 CHANGE_COLORSCHEME_BUTTON.addEventListener("click", displayColorSchemeSettings);
 GO_BACK_BUTTON.addEventListener("click", goBackToStartMenu);
@@ -507,10 +508,10 @@ const NA_STRANI = new Question("Co je tohle za ulici v Orlové?", "images/na_str
     "na stráni", "na strani"
 ]);
 TO_BE_ITERATED.push(NA_STRANI);
-const U_VODOJEMU = new Question("Co je tohle za ulici v Orlové?", "images/u_vodojemu.png", [
+const U_VODOJEMU_ORLOVA = new Question("Co je tohle za ulici v Orlové?", "images/u_vodojemu_orlova.png", [
     "u vodojemu"
 ]);
-TO_BE_ITERATED.push(U_VODOJEMU);
+TO_BE_ITERATED.push(U_VODOJEMU_ORLOVA);
 const K_ZIMOVUDCE = new Question("Co je tohle za ulici v Orlové?", "images/k_zimovudce.png", [
     "k zimovudce", "k zimovůdce"
 ]);
@@ -608,6 +609,20 @@ const PODZAMCI = new Question("Ulice u dolu Zárubek, Slezská Ostrava", "images
     "podzámčí", "podzamci", "podzámči", "podzamčí"
 ]);
 TO_BE_ITERATED.push(PODZAMCI);
+// 17. listopadu 2026 haha
+console.log(SEDMNACTEHO_LISTOPADU_ORLOVA);
+console.log(SEDMNACTEHO_LISTOPADU_OSTRAVA);
+// I
+// V
+const U_VODOJEMU_OSTRAVA = new Question("Co je tohle za uliceju v Ostravě?", "images/u_vodojemu_ostrava.png", [
+    "u vodojmemu", "u vodojemu"
+]);
+TO_BE_ITERATED.push(U_VODOJEMU_OSTRAVA);
+const V_ZATISI = new Question("Co je tohle za uliceju v Mariánských Horách?", "images/v_zatisi.png", [
+    "v zátiší", "v zatisi", "v zátiši", "v zátisí", "v zátisi",
+    "v zatiší", "v zatiši", "v zátisí"
+]);
+TO_BE_ITERATED.push(V_ZATISI);
 //----------------------------------------------
 preloadImages();
 const maxScore = TO_BE_ITERATED.length;
@@ -706,7 +721,8 @@ Verze 1.6 "Amen In Here" - sobota 7.11.2026
     "can i get an amen in here? you see the magic of art, it would tear you apart if you knew!"
     "he had bigger plans for the band, by demand we came back to this darkened cell"
 `;
-const VERSION_1_7 = `
+const VERSION_1_7 = BUNCH_OF_DASHES + `
+
 Verze 1.7 "Question Mark" - pátek 13. (11.) 2026
     - Název verze, jelikož jsem tam měl "???" jako placeholder
     - Přidal jsem 2 ostravské ulice:
@@ -719,7 +735,17 @@ Verze 1.7 "Question Mark" - pátek 13. (11.) 2026
     - Rozšířil jsem barevná schémata na hlavní menu:
         - v předchozích verzích platila schémata pouze na herní menu, nyní designují i hlavní menu
 `;
-const LOG = VERSION_1_7 + "\n" +
+const VERSION_1_8 = `
+Verze 1.8 "Epiphany" - čtvrtek 19.11.2026
+    - Novinky:
+        - Přidal jsem 2 nové ulice
+            - V zátiší
+            - U vodojemu
+    - Změny:
+        - v předchozích verzích jsem používal document.querySelector a html classy, nyní od teď používám html idečka a document.getElementById
+`;
+const LOG = VERSION_1_8 + "\n" +
+    VERSION_1_7 + "\n" +
     VERSION_1_6 + "\n" +
     VERSION_1_5 + "\n" +
     VERSION_1_4 + "\n" +
