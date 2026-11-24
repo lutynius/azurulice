@@ -19,7 +19,21 @@ h1, h2 {
     top: 0.5%;
 }
 
+#note {
+    background-color: red;
+    position: absolute;
+    top: 1%;
+    right: 8%;
+    animation: pulse 1.5s infinite alternate
+}
+
+@keyframes pulse {
+    from {transform: scale(1);}
+    to {transform: scale(2);}
+}
+
 #main-menu {
+    position: relative;
     width: 80%;
     height: 85%;
     display: flex;
@@ -119,6 +133,10 @@ h1, h2 {
 #blud-showcase-color-1 {background-color: cornflowerblue;}
 #blud-showcase-color-2 {background-color: dodgerblue;}
 #blud-showcase-color-3 {background-color: royalblue;}
+
+#brevipartyon-color-1 {background-color: hotpink;}
+#brevipartyon-color-2 {background-color: lime;}
+#brevipartyon-color-3 {background-color: gold;}
 
 /*--------------------------------------------------*/
 

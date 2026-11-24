@@ -15,6 +15,7 @@ const CHANGE_TO_TRIUMVIRATE_BUTTON = document.getElementById("change-to-triumvir
 const CHANGE_TO_LIGHT_BUTTON = document.getElementById("change-to-light-button") as HTMLButtonElement;
 const CHANGE_TO_DARK_BUTTON = document.getElementById("change-to-dark-button") as HTMLButtonElement;
 const CHANGE_TO_BLUD_BUTTON = document.getElementById("change-to-blud-button") as HTMLButtonElement;
+const CHANGE_TO_BREVIPARTYON_BUTTON = document.getElementById("change-to-brevipartyon-button") as HTMLButtonElement;
 const CHANGELOG = document.getElementById("changelog") as HTMLDivElement;
 const GO_TO_MAIN_MENU_BUTTON = document.getElementById("go-to-menu-button") as HTMLButtonElement;
 const UPDATELOG_TEXT = document.getElementById("updatelog-text") as HTMLParagraphElement;
@@ -46,6 +47,7 @@ CHANGE_TO_TRIUMVIRATE_BUTTON.addEventListener("click", setColorSchemeToTriumvira
 CHANGE_TO_LIGHT_BUTTON.addEventListener("click", setColorSchemeToLight);
 CHANGE_TO_DARK_BUTTON.addEventListener("click", setColorSchemeToDark);
 CHANGE_TO_BLUD_BUTTON.addEventListener("click", setColorSchemeToBlud);
+CHANGE_TO_BREVIPARTYON_BUTTON.addEventListener("click", setColorSchemeToBrevipartyon);
 SUBMIT_BUTTON.addEventListener("click", submitAnswer);
 
 function startGame(): void {
@@ -145,6 +147,22 @@ function setColorSchemeToBlud(): void {
         HEADER.style.backgroundColor = "cornflowerblue";
         MAIN.style.backgroundColor = "dodgerblue";
         FOOTER.style.backgroundColor = "royalblue";
+    } else {
+        console.log("ERROR: Question's header, main, footer, and text apparently do not exist.");
+    }
+}
+
+function setColorSchemeToBrevipartyon(): void {
+    if (MAIN_MENU && MAIN_MENU_TITLE && MAIN_MENU_SUBTITLE &&
+        HEADER && MAIN && FOOTER && TEXT && COPYRIGHT_HEADER){
+        MAIN_MENU.style.backgroundColor = "hotpink";
+        MAIN_MENU_TITLE.style.color = "black";
+        MAIN_MENU_SUBTITLE.style.color = "black";
+        TEXT.style.color = "black";
+        COPYRIGHT_HEADER.style.color = "black";
+        HEADER.style.backgroundColor = "hotpink";
+        MAIN.style.backgroundColor = "lime";
+        FOOTER.style.backgroundColor = "gold";
     } else {
         console.log("ERROR: Question's header, main, footer, and text apparently do not exist.");
     }
@@ -892,6 +910,73 @@ const V_ZATISI = new Question("Co je tohle za uliceju v Mariánských Horách?",
 );
 TO_BE_ITERATED.push(V_ZATISI);
 
+// 23. 11. 2026
+// I
+// V
+
+const U_TESLY = new Question("Co je tohle za uliceju v Petřvaldu?",
+    "images/u_tesly.png", [
+        "u tesly"
+    ]
+);
+TO_BE_ITERATED.push(U_TESLY);
+
+const BRIGADNICKA_PETRVALD = new Question("Co je tohle za uličku v Petřvaldu?",
+    "images/brigadnicka_petrvald.png", [
+        "brigádnická", "brigadnicka", "brigádnicka", "brigadnická"
+    ]
+);
+TO_BE_ITERATED.push(BRIGADNICKA_PETRVALD);
+
+const CAPKOVA = new Question("Co je tohle za uliceju v Radvanicích?",
+    "images/capkova.png", [
+        "čapkova", "capkova"
+    ]
+);
+TO_BE_ITERATED.push(CAPKOVA);
+
+const DALIMILOVA = new Question("Co je tohle za ulicu v Radvanicích?",
+    "images/dalimilova.png", [
+        "dalimilova"
+    ]
+);
+TO_BE_ITERATED.push(DALIMILOVA);
+
+const HYNAISOVA = new Question("Co je tohle za ulicii v Mariánských horách?",
+    "images/hynaisova.png", [
+        "hynaisova"
+    ]
+);
+TO_BE_ITERATED.push(HYNAISOVA);
+
+const KOLLAROVA = new Question("Co je tohle za ulcu v Mariánských horách?",
+    "images/kollarova.png", [
+        "kollárova"
+    ]
+);
+TO_BE_ITERATED.push(KOLLAROVA);
+
+const OBLA = new Question("Co je tohle za uliceju v Mariánských horách?",
+    "images/obla.png", [
+        "oblá", "obla"
+    ]
+);
+TO_BE_ITERATED.push(OBLA);
+
+const KARLA_TOMANA = new Question("Co je tohle za ulici v Mariánských horách?",
+    "images/karla_tomana.png", [
+        "karla tomana"
+    ]
+);
+TO_BE_ITERATED.push(KARLA_TOMANA);
+
+const U_KOUPALISTE = new Question("Co je tohle za uliceju v Hulvácích?",
+    "images/u_koupaliste.png", [
+        "u koupaliště", "u koupaliste", "u koupalište", "u koupalistě"
+    ]
+);
+TO_BE_ITERATED.push(U_KOUPALISTE);
+
 //----------------------------------------------
 
 preloadImages();
@@ -1019,7 +1104,8 @@ Verze 1.7 "Question Mark" - pátek 13. (11.) 2026
         - v předchozích verzích platila schémata pouze na herní menu, nyní designují i hlavní menu
 `;    
 
-const VERSION_1_8: string = `
+const VERSION_1_8: string = BUNCH_OF_DASHES + `
+
 Verze 1.8 "Epiphany" - čtvrtek 19.11.2026
     - Novinky:
         - Přidal jsem 2 nové ulice
@@ -1029,7 +1115,39 @@ Verze 1.8 "Epiphany" - čtvrtek 19.11.2026
         - v předchozích verzích jsem používal document.querySelector a html classy, nyní od teď používám html idečka a document.getElementById
 `;
 
+const VERSION_1_9: string = `
+Verze 1.9 "Nearbeing" - úterý 24.11.2026
+
+    - VÝROČÍ JEDEN MĚSÍC!
+
+    - Novinky:
+        - Přidal jsme 9 ulic:
+            - U Tesly
+            - Brigádnická (Petřvald)
+            - Čapkova
+            - Dalimilova
+            - Hynaisova
+            - Kollárova
+            - Oblá
+            - Karla Tomana
+            - U Koupaliště
+        - Přidal jsem nové barevné schéma Brevipartyon
+            - původně od Namestys 1.5
+            - CSS barvy:
+                1. hotpink
+                2. lime
+                3. gold
+                
+        - "1 MĚSÍC" heading a první animace!!!
+
+    - Github:
+        - Přidal jsem topics na github:
+            - quiz, quiz-app, quiz-game, quizapp, quiz-application, street, streets, ostrava
+            - zbrusu nové topicy (jen já tam su): orlova, petrvald, rychvald
+`;
+
 const LOG: string =
+    VERSION_1_9 + "\n" +
     VERSION_1_8 + "\n" + 
     VERSION_1_7 + "\n" + 
     VERSION_1_6 + "\n" +
